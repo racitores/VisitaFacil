@@ -1,3 +1,4 @@
+import { actualizarParadas } from './ruta.mjs';
 import { vencimientosAnuales } from './vencimientos.mjs';
 
 const month = document.querySelector('#review-month');
@@ -19,7 +20,7 @@ function element(tag, text, className) {
   return node;
 }
 
-function reviewItem({ cliente, ultimaRevision, fecha }) {
+function reviewItem({ cliente, ultimaRevision, fecha }, onSelection) {
   const item = element('li', undefined, 'review-row');
   const summary = element('div');
   const name = element('h3', cliente.nombre);
@@ -49,7 +50,12 @@ function reviewItem({ cliente, ultimaRevision, fecha }) {
     element('small', (ultimaRevision ? 'Última revisión · ' : 'Alta · ') + lastDate)
   );
 
-  item.append(summary, due);
+  const checkbox = element('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = true;
+  checkbox.setAttribute('aria-label', 'Incluir a ' + cliente.nombre + ' en la ruta');
+  checkbox.addEventListener('change', () => onSelection(cliente.id, checkbox.checked));
+  item.append(checkbox, summary, due);
   return item;
 }
 
@@ -73,7 +79,17 @@ try {
     status.textContent = matches.length
       ? matches.length + (matches.length === 1 ? ' cliente pendiente' : ' clientes pendientes')
       : 'No hay revisiones pendientes para este mes.';
-    list.replaceChildren(...matches.map(reviewItem));
+    const included = new Set(matches.map(({ cliente }) => cliente.id));
+    function updateRoute() {
+      actualizarParadas(matches.map(({ cliente }) => cliente).filter(cliente => included.has(cliente.id)));
+    }
+    function selectClient(id, checked) {
+      if (checked) included.add(id);
+      else included.delete(id);
+      updateRoute();
+    }
+    list.replaceChildren(...matches.map(item => reviewItem(item, selectClient)));
+    updateRoute();
   }
 
   month.addEventListener('change', render);

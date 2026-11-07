@@ -35,8 +35,28 @@
           <label>Mes <select id="review-month" disabled></select></label>
           <label>Año <select id="review-year" disabled></select></label>
         </form>
+        <a class="route-jump" href="#planificador">Planificar ruta ↓</a>
       </div>
       <ul id="review-list" class="review-list" aria-label="Clientes pendientes de revisión"></ul>
+    </section>
+    <section id="planificador" class="panel route-panel" aria-labelledby="route-title">
+      <h2 id="route-title">Planificar ruta</h2>
+      <p class="route-note">Elige las visitas en el listado y fija dónde quieres empezar y terminar.</p>
+      <form id="route-form">
+        <div class="route-fields">
+          <label>Origen <input id="route-origin" placeholder="Dirección o latitud, longitud" required maxlength="200"></label>
+          <label>Destino <input id="route-destination" placeholder="Mismo punto que el origen" maxlength="200"></label>
+        </div>
+        <label class="route-remember"><input id="route-remember" type="checkbox" checked> Recordar en este navegador</label>
+        <p class="route-note">Al calcular, las direcciones se consultan en Photon y las coordenadas se envían a OSRM. Las ubicaciones de los clientes ficticios son aproximadas.</p>
+        <div class="route-actions">
+          <button id="route-submit" type="submit" disabled>Calcular ruta</button>
+          <span id="route-count"></span>
+        </div>
+      </form>
+      <p id="route-status" class="status" role="status"></p>
+      <div id="route-result"></div>
+      <p class="route-credit">Rutas por <a href="https://routing.openstreetmap.de/about.html">OSRM / FOSSGIS</a> · Datos © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · <a href="https://www.openstreetmap.org/fixthemap">Corrige el mapa</a></p>
     </section>
   </main>
   <footer class="wrap">Caldera Gestión <span>·</span> Registro de servicio técnico</footer>

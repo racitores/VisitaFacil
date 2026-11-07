@@ -21,3 +21,9 @@ La app lee el JSON en el navegador y ordena las revisiones de más reciente a m�
 ## Revisiones pendientes
 
 La pantalla mensual calcula el siguiente vencimiento de cada cliente sumando un año a su última revisión registrada o, si aún no tiene revisiones, a su fecha de alta. Para un 29 de febrero, usa el 28 de febrero si el año siguiente no es bisiesto. El filtro abre en el mes actual según la hora peninsular española y muestra los vencimientos del mes y año seleccionados, ordenados por fecha. Los datos de prueba incluyen al menos tres vencimientos por mes de 2026.
+
+## Planificador de ruta
+
+En Revisiones pendientes, selecciona las visitas del mes e introduce origen y destino. Con el destino vacío se calcula la vuelta al origen. Si no se puede verificar un portal de origen o destino, se indica cuando se usa un punto aproximado de esa calle. Los campos aceptan direcciones o coordenadas en formato `latitud, longitud`. La opción de recordar guarda los extremos en el navegador.
+
+El planificador consulta a Photon para las direcciones y a OSRM/FOSSGIS para las distancias y tiempos estimados por carretera. Evalúa todos los órdenes posibles mediante programación dinámica, hasta 14 visitas por cálculo, y minimiza la suma de los kilómetros de los trayectos que OSRM propone entre puntos. La comparación usa el orden del listado mensual. No contempla tráfico en directo, peajes, horarios ni tiempo en casa del cliente. Las coordenadas de demostración son puntos aproximados por municipio y se usan en lugar de las calles ficticias del JSON. Los servicios externos se consultan al pulsar «Calcular ruta».
