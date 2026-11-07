@@ -263,8 +263,10 @@ form.addEventListener('submit', async event => {
     for (const client of stops) {
       const address = clientAddress(client.direccion);
       const point = coordenadasCliente(client);
-      const label = client.direccion.coordenadas
-        ? address : client.direccion.localidad + ' · ubicación de prueba';
+      const place = client.direccion;
+      const label = place.coordenadas
+        ? place.via + ', ' + place.codigoPostal + ' ' + place.localidad
+        : 'Punto aproximado en ' + place.localidad;
       const location = point ? { point, label } : await locate(address, signal);
       points.push({ ...location, name: client.nombre });
     }

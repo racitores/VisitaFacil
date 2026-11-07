@@ -6,10 +6,10 @@
       "telefono": "+34 900 000 101",
       "email": "lucia.mendoza@example.com",
       "direccion": {
-        "via": "Calle del Quemador, 18",
-        "pisoPuerta": "2.º B",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "via": "Calle Camarena, 10",
+        "pisoPuerta": "",
+        "codigoPostal": "28047",
+        "coordenadas": [-3.756272, 40.395971],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -124,10 +124,10 @@
       "telefono": "+34 900 000 107",
       "email": "cliente007@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 7",
+        "via": "Calle Isaac Albéniz, 1",
         "pisoPuerta": "",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "codigoPostal": "28019",
+        "coordenadas": [-3.720088, 40.397867],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -412,10 +412,10 @@
       "telefono": "+34 900 000 121",
       "email": "cliente021@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 21",
-        "pisoPuerta": "2.º B",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "via": "Avenida La Gavia, 55",
+        "pisoPuerta": "",
+        "codigoPostal": "28051",
+        "coordenadas": [-3.616442, 40.366911],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -451,10 +451,10 @@
       "telefono": "+34 900 000 123",
       "email": "cliente023@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 23",
-        "pisoPuerta": "1.º A",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "via": "Paseo Fernán Núñez, 24",
+        "pisoPuerta": "",
+        "codigoPostal": "28009",
+        "coordenadas": [-3.679593, 40.416609],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -490,10 +490,10 @@
       "telefono": "+34 900 000 125",
       "email": "cliente025@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 25",
+        "via": "Calle Mantuano, 51",
         "pisoPuerta": "",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "codigoPostal": "28002",
+        "coordenadas": [-3.676231, 40.448106],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -778,10 +778,10 @@
       "telefono": "+34 900 000 139",
       "email": "cliente039@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 39",
-        "pisoPuerta": "2.º B",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "via": "Calle Calcio, 1",
+        "pisoPuerta": "",
+        "codigoPostal": "28021",
+        "coordenadas": [-3.679346, 40.351187],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -817,10 +817,10 @@
       "telefono": "+34 900 000 141",
       "email": "cliente041@example.com",
       "direccion": {
-        "via": "Calle de la Sonda, 41",
-        "pisoPuerta": "1.º A",
-        "codigoPostal": "28005",
-        "coordenadasDemo": [-3.711, 40.411],
+        "via": "Calle Mar de las Antillas, 10",
+        "pisoPuerta": "",
+        "codigoPostal": "28033",
+        "coordenadas": [-3.646673, 40.475717],
         "localidad": "Madrid",
         "provincia": "Madrid",
         "pais": "España"
@@ -1499,7 +1499,7 @@
         "via": "Calle Rafael Finat, 51",
         "pisoPuerta": "",
         "codigoPostal": "28044",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.769439,
           40.379442
         ],
@@ -1524,7 +1524,7 @@
         "via": "Calle Doctor Esquerdo, 189",
         "pisoPuerta": "",
         "codigoPostal": "28007",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.672409,
           40.403578
         ],
@@ -1549,7 +1549,7 @@
         "via": "Calle Abertura, 2",
         "pisoPuerta": "",
         "codigoPostal": "28033",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.64962,
           40.477193
         ],
@@ -1574,7 +1574,7 @@
         "via": "Calle Corregidor Alonso de Tobar, 5",
         "pisoPuerta": "",
         "codigoPostal": "28030",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.649438,
           40.403992
         ],
@@ -1599,7 +1599,7 @@
         "via": "Calle Quintana, 9",
         "pisoPuerta": "",
         "codigoPostal": "28008",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.716951,
           40.427947
         ],
@@ -1624,7 +1624,7 @@
         "via": "Avenida Rafaela Ybarra, 43",
         "pisoPuerta": "",
         "codigoPostal": "28026",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.710616,
           40.381882
         ],
@@ -1649,7 +1649,7 @@
         "via": "Calle Felipe el Hermoso, 4",
         "pisoPuerta": "",
         "codigoPostal": "28010",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.699666,
           40.4354
         ],
@@ -1674,7 +1674,7 @@
         "via": "Plaza Antonio María Segovia, 2",
         "pisoPuerta": "",
         "codigoPostal": "28031",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.613673,
           40.38092
         ],
@@ -1699,7 +1699,7 @@
         "via": "Calle Antonia Rodríguez Sacristan, 7",
         "pisoPuerta": "",
         "codigoPostal": "28044",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.748071,
           40.373426
         ],
@@ -1724,7 +1724,7 @@
         "via": "Calle Villalonso, 16",
         "pisoPuerta": "",
         "codigoPostal": "28021",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.710116,
           40.349525
         ],
@@ -1749,7 +1749,7 @@
         "via": "Avenida Rafael Alberti, 36",
         "pisoPuerta": "",
         "codigoPostal": "28018",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.642918,
           40.384497
         ],
@@ -1774,7 +1774,7 @@
         "via": "Calle Conde Duque, 9",
         "pisoPuerta": "",
         "codigoPostal": "28015",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.7106,
           40.427387
         ],
@@ -1799,7 +1799,7 @@
         "via": "Calle Hermanos García Noblejas, 14",
         "pisoPuerta": "",
         "codigoPostal": "28037",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.637292,
           40.436447
         ],
@@ -1824,7 +1824,7 @@
         "via": "Avenida Toreros, 5",
         "pisoPuerta": "",
         "codigoPostal": "28028",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.670929,
           40.431993
         ],
@@ -1849,7 +1849,7 @@
         "via": "Calle Manuel Ferrero, 1",
         "pisoPuerta": "",
         "codigoPostal": "28036",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.684611,
           40.467453
         ],
@@ -1874,7 +1874,7 @@
         "via": "Bulevar Indalecio Prieto, 21",
         "pisoPuerta": "",
         "codigoPostal": "28032",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.621282,
           40.399829
         ],
@@ -1899,7 +1899,7 @@
         "via": "Avenida Logroño, 179",
         "pisoPuerta": "",
         "codigoPostal": "28042",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.593746,
           40.460559
         ],
@@ -1924,7 +1924,7 @@
         "via": "Calle María Sevilla Diago, 15",
         "pisoPuerta": "",
         "codigoPostal": "28022",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.610566,
           40.433292
         ],
@@ -1949,7 +1949,7 @@
         "via": "Avenida Monforte de Lemos, 38",
         "pisoPuerta": "",
         "codigoPostal": "28029",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.709441,
           40.478601
         ],
@@ -1974,7 +1974,7 @@
         "via": "Calle Francos Rodríguez, 67",
         "pisoPuerta": "",
         "codigoPostal": "28039",
-        "coordenadasDemo": [
+        "coordenadas": [
           -3.71054,
           40.457495
         ],
