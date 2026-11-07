@@ -1,10 +1,20 @@
 import { actualizarParadas } from './ruta.mjs';
+import { MAX_PARADAS } from './optimizacion.mjs';
+import { agruparVisitas } from './zonas.mjs';
 import { vencimientosAnuales } from './vencimientos.mjs';
 
 const month = document.querySelector('#review-month');
 const year = document.querySelector('#review-year');
 const list = document.querySelector('#review-list');
 const status = document.querySelector('#review-status');
+const limit = document.querySelector('#zone-limit');
+const zoneStatus = document.querySelector('#zone-status');
+const zoneMissing = document.querySelector('#zone-missing');
+const zoneList = document.querySelector('#zone-list');
+const routeTitle = document.querySelector('#route-title');
+const routeScope = document.querySelector('#route-scope');
+const routeReset = document.querySelector('#route-reset');
+const reviewDetails = document.querySelector('#review-details');
 const dateFormat = new Intl.DateTimeFormat('es-ES', { dateStyle: 'long', timeZone: 'UTC' });
 const monthFormat = new Intl.DateTimeFormat('es-ES', { month: 'long', timeZone: 'UTC' });
 const currentPeriod = new Intl.DateTimeFormat('es-ES', {
@@ -59,6 +69,40 @@ function reviewItem({ cliente, ultimaRevision, fecha }, onSelection) {
   return item;
 }
 
+function renderZones(clientes) {
+  const { grupos, sinCoordenadas } = agruparVisitas(clientes, Number(limit.value));
+  zoneStatus.textContent = grupos.length
+    ? grupos.length + (grupos.length === 1 ? ' jornada propuesta' : ' jornadas propuestas')
+    : 'No hay visitas con ubicación para agrupar.';
+  zoneMissing.textContent = sinCoordenadas.length
+    ? 'Sin coordenadas para agrupar: ' + sinCoordenadas.map(({ nombre }) => nombre).join(', ')
+      + '. Puedes incluirlos en una ruta manual desde el listado.'
+    : '';
+  zoneMissing.hidden = !sinCoordenadas.length;
+  zoneList.replaceChildren(...grupos.map((grupo, index) => {
+    const dia = 'Día ' + (index + 1);
+    const municipios = [...new Set(grupo.map(({ direccion }) => direccion.localidad))].join(', ');
+    const item = element('li', undefined, 'zone-card');
+    const visits = grupo.length + (grupo.length === 1 ? ' visita' : ' visitas');
+    const clients = element('ul', undefined, 'zone-clients');
+    for (const cliente of grupo) {
+      clients.append(element('li', cliente.nombre + ' · ' + cliente.direccion.localidad));
+    }
+    const button = element('button', 'Cargar ruta', 'zone-button');
+    button.type = 'button';
+    button.setAttribute('aria-label', 'Cargar ruta del ' + dia.toLowerCase());
+    button.addEventListener('click', () => {
+      actualizarParadas(grupo);
+      routeScope.textContent = dia + ' · ' + municipios;
+      routeReset.hidden = false;
+      routeTitle.focus();
+      routeTitle.scrollIntoView({ block: 'start' });
+    });
+    item.append(element('h3', dia + ' · ' + visits), element('p', municipios), clients, button);
+    return item;
+  }));
+}
+
 try {
   const response = await fetch(new URL('./clientes.json', import.meta.url));
   if (!response.ok) throw new Error('No se pudo leer clientes.json');
@@ -72,6 +116,20 @@ try {
   for (const value of years) year.add(new Option(value, value));
   month.value = currentMonth;
   year.value = currentYear;
+  for (let i = 1; i <= MAX_PARADAS; i++) limit.add(new Option(i, i));
+  limit.value = '5';
+  let selected = [];
+
+  function resetRoute() {
+    actualizarParadas(selected);
+    routeScope.textContent = 'Selección del mes';
+    routeReset.hidden = true;
+  }
+
+  function updatePlan() {
+    renderZones(selected);
+    resetRoute();
+  }
 
   function render() {
     const prefix = year.value + '-' + month.value.padStart(2, '0') + '-';
@@ -81,20 +139,28 @@ try {
       : 'No hay revisiones pendientes para este mes.';
     const included = new Set(matches.map(({ cliente }) => cliente.id));
     function updateRoute() {
-      actualizarParadas(matches.map(({ cliente }) => cliente).filter(cliente => included.has(cliente.id)));
+      selected = matches.map(({ cliente }) => cliente).filter(cliente => included.has(cliente.id));
+      updatePlan();
     }
     function selectClient(id, checked) {
       if (checked) included.add(id);
       else included.delete(id);
       updateRoute();
     }
+    reviewDetails.open = matches.length <= 8;
     list.replaceChildren(...matches.map(item => reviewItem(item, selectClient)));
     updateRoute();
   }
 
   month.addEventListener('change', render);
   year.addEventListener('change', render);
+  limit.addEventListener('change', updatePlan);
+  routeReset.addEventListener('click', () => {
+    resetRoute();
+    routeTitle.focus();
+  });
   render();
+  limit.disabled = false;
   month.disabled = false;
   year.disabled = false;
 } catch (error) {

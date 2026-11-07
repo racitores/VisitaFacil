@@ -37,11 +37,28 @@
         </form>
         <a class="route-jump" href="#planificador">Planificar ruta ↓</a>
       </div>
-      <ul id="review-list" class="review-list" aria-label="Clientes pendientes de revisión"></ul>
+      <section class="zone-panel" aria-labelledby="zone-title">
+        <div class="period">
+          <div>
+            <h2 id="zone-title">Agrupar visitas por zona</h2>
+            <p class="route-note">Reparte las visitas marcadas en jornadas de tamaño parecido y por cercanía.</p>
+          </div>
+          <label class="review-filter zone-limit">Máximo de visitas por día <select id="zone-limit" disabled></select></label>
+        </div>
+        <p id="zone-status" class="status" role="status"></p>
+        <p id="zone-missing" class="route-note"></p>
+        <ol id="zone-list" class="zone-list" aria-label="Jornadas propuestas"></ol>
+      </section>
+      <details id="review-details">
+        <summary>Ver y seleccionar clientes del mes</summary>
+        <ul id="review-list" class="review-list" aria-label="Clientes pendientes de revisión"></ul>
+      </details>
     </section>
     <section id="planificador" class="panel route-panel" aria-labelledby="route-title">
-      <h2 id="route-title">Planificar ruta</h2>
-      <p class="route-note">Elige las visitas en el listado y fija dónde quieres empezar y terminar.</p>
+      <h2 id="route-title" tabindex="-1">Planificar ruta</h2>
+      <p class="route-note">Carga una jornada o elige las visitas en el listado y fija dónde quieres empezar y terminar.</p>
+      <p class="route-note" id="route-scope">Selección del mes</p>
+      <button id="route-reset" class="zone-button" type="button" hidden>Volver a la selección del mes</button>
       <form id="route-form">
         <div class="route-fields">
           <label>Origen <input id="route-origin" placeholder="Dirección o latitud, longitud" required maxlength="200"></label>

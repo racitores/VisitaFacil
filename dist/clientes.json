@@ -849,6 +849,646 @@
       },
       "fechaAlta": "2025-12-24",
       "revisiones": []
+    },
+    {
+      "id": "CL-043",
+      "nombre": "Marina Lozano Gil",
+      "telefono": "+34 900 000 143",
+      "email": "cliente043@example.com",
+      "direccion": {
+        "via": "Calle del Depósito, 3",
+        "pisoPuerta": "",
+        "codigoPostal": "29400",
+        "coordenadasDemo": [
+          -5.167,
+          36.743
+        ],
+        "localidad": "Ronda",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-01",
+      "revisiones": []
+    },
+    {
+      "id": "CL-044",
+      "nombre": "Alberto Ríos Marín",
+      "telefono": "+34 900 000 144",
+      "email": "cliente044@example.com",
+      "direccion": {
+        "via": "Avenida de la Sonda, 10",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29350",
+        "coordenadasDemo": [
+          -5.138,
+          36.8
+        ],
+        "localidad": "Arriate",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-02",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-045",
+      "nombre": "Ainhoa Vera Campos",
+      "telefono": "+34 900 000 145",
+      "email": "cliente045@example.com",
+      "direccion": {
+        "via": "Paseo del Retorno, 17",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29370",
+        "coordenadasDemo": [
+          -5.252,
+          36.719
+        ],
+        "localidad": "Benaoján",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-03",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-046",
+      "nombre": "Héctor Vargas Pino",
+      "telefono": "+34 900 000 146",
+      "email": "cliente046@example.com",
+      "direccion": {
+        "via": "Camino de la Presión, 24",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29380",
+        "coordenadasDemo": [
+          -5.343,
+          36.616
+        ],
+        "localidad": "Cortes de la Frontera",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-04",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-047",
+      "nombre": "Eva Rubio Galán",
+      "telefono": "+34 900 000 147",
+      "email": "cliente047@example.com",
+      "direccion": {
+        "via": "Plaza del Regulador, 31",
+        "pisoPuerta": "",
+        "codigoPostal": "29480",
+        "coordenadasDemo": [
+          -5.317,
+          36.518
+        ],
+        "localidad": "Gaucín",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-05",
+      "revisiones": []
+    },
+    {
+      "id": "CL-048",
+      "nombre": "Gonzalo Roca Martín",
+      "telefono": "+34 900 000 148",
+      "email": "cliente048@example.com",
+      "direccion": {
+        "via": "Calle del Calor, 38",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29691",
+        "coordenadasDemo": [
+          -5.25,
+          36.377
+        ],
+        "localidad": "Manilva",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-06",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-049",
+      "nombre": "Claudia Salas Moya",
+      "telefono": "+34 900 000 149",
+      "email": "cliente049@example.com",
+      "direccion": {
+        "via": "Avenida del Radiador, 45",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29680",
+        "coordenadasDemo": [
+          -5.151,
+          36.426
+        ],
+        "localidad": "Estepona",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-07",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-050",
+      "nombre": "Tomás Pardo Mesa",
+      "telefono": "+34 900 000 150",
+      "email": "cliente050@example.com",
+      "direccion": {
+        "via": "Camino del Termómetro, 52",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29690",
+        "coordenadasDemo": [
+          -5.273,
+          36.443
+        ],
+        "localidad": "Casares",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-08",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-051",
+      "nombre": "Elisa Alba Cano",
+      "telefono": "+34 900 000 151",
+      "email": "cliente051@example.com",
+      "direccion": {
+        "via": "Paseo de la Sonda, 8",
+        "pisoPuerta": "",
+        "codigoPostal": "29601",
+        "coordenadasDemo": [
+          -4.887,
+          36.51
+        ],
+        "localidad": "Marbella",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-09",
+      "revisiones": []
+    },
+    {
+      "id": "CL-052",
+      "nombre": "Adrián Vela Cruz",
+      "telefono": "+34 900 000 152",
+      "email": "cliente052@example.com",
+      "direccion": {
+        "via": "Calle del Calderín, 15",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29610",
+        "coordenadasDemo": [
+          -4.854,
+          36.565
+        ],
+        "localidad": "Ojén",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-10",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-053",
+      "nombre": "Lucía Ferrer Costa",
+      "telefono": "+34 900 000 153",
+      "email": "cliente053@example.com",
+      "direccion": {
+        "via": "Cuesta del Filtro, 22",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29611",
+        "coordenadasDemo": [
+          -4.95,
+          36.582
+        ],
+        "localidad": "Istán",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-11",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-054",
+      "nombre": "Rubén Medina Vera",
+      "telefono": "+34 900 000 154",
+      "email": "cliente054@example.com",
+      "direccion": {
+        "via": "Avenida del Caudal, 29",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29100",
+        "coordenadasDemo": [
+          -4.757,
+          36.659
+        ],
+        "localidad": "Coín",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-12",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-055",
+      "nombre": "Isabel Núñez Rivas",
+      "telefono": "+34 900 000 155",
+      "email": "cliente055@example.com",
+      "direccion": {
+        "via": "Paseo de la Presión, 36",
+        "pisoPuerta": "",
+        "codigoPostal": "29500",
+        "coordenadasDemo": [
+          -4.705,
+          36.823
+        ],
+        "localidad": "Álora",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-13",
+      "revisiones": []
+    },
+    {
+      "id": "CL-056",
+      "nombre": "Mateo León Plaza",
+      "telefono": "+34 900 000 156",
+      "email": "cliente056@example.com",
+      "direccion": {
+        "via": "Calle del Mezclador, 43",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29570",
+        "coordenadasDemo": [
+          -4.63,
+          36.711
+        ],
+        "localidad": "Cártama",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-14",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-057",
+      "nombre": "Noelia Gil Serrano",
+      "telefono": "+34 900 000 157",
+      "email": "cliente057@example.com",
+      "direccion": {
+        "via": "Calle de la Tubería, 50",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29560",
+        "coordenadasDemo": [
+          -4.707,
+          36.766
+        ],
+        "localidad": "Pizarra",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-15",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-058",
+      "nombre": "Julián Luna Soler",
+      "telefono": "+34 900 000 158",
+      "email": "cliente058@example.com",
+      "direccion": {
+        "via": "Camino del Radiador, 6",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29150",
+        "coordenadasDemo": [
+          -4.542,
+          36.826
+        ],
+        "localidad": "Almogía",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-16",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-059",
+      "nombre": "Alicia Rojas Arias",
+      "telefono": "+34 900 000 159",
+      "email": "cliente059@example.com",
+      "direccion": {
+        "via": "Plaza de la Bomba, 13",
+        "pisoPuerta": "",
+        "codigoPostal": "29566",
+        "coordenadasDemo": [
+          -4.84,
+          36.786
+        ],
+        "localidad": "Casarabonela",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-17",
+      "revisiones": []
+    },
+    {
+      "id": "CL-060",
+      "nombre": "Mario Campos Reyes",
+      "telefono": "+34 900 000 160",
+      "email": "cliente060@example.com",
+      "direccion": {
+        "via": "Calle del Acumulador, 20",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29200",
+        "coordenadasDemo": [
+          -4.559,
+          37.02
+        ],
+        "localidad": "Antequera",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-18",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-061",
+      "nombre": "Beatriz Vega Nieves",
+      "telefono": "+34 900 000 161",
+      "email": "cliente061@example.com",
+      "direccion": {
+        "via": "Avenida de la Válvula, 27",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29300",
+        "coordenadasDemo": [
+          -4.388,
+          37.096
+        ],
+        "localidad": "Archidona",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-19",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-062",
+      "nombre": "Víctor Fuentes Mora",
+      "telefono": "+34 900 000 162",
+      "email": "cliente062@example.com",
+      "direccion": {
+        "via": "Calle del Sensor, 34",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29320",
+        "coordenadasDemo": [
+          -4.861,
+          37.047
+        ],
+        "localidad": "Campillos",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-20",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-063",
+      "nombre": "Lorena Mena Díaz",
+      "telefono": "+34 900 000 163",
+      "email": "cliente063@example.com",
+      "direccion": {
+        "via": "Paseo del Intercambiador, 41",
+        "pisoPuerta": "",
+        "codigoPostal": "29327",
+        "coordenadasDemo": [
+          -4.92,
+          36.984
+        ],
+        "localidad": "Teba",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-21",
+      "revisiones": []
+    },
+    {
+      "id": "CL-064",
+      "nombre": "Raúl Ponce Alba",
+      "telefono": "+34 900 000 164",
+      "email": "cliente064@example.com",
+      "direccion": {
+        "via": "Plaza de la Sonda, 48",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29520",
+        "coordenadasDemo": [
+          -4.729,
+          37.135
+        ],
+        "localidad": "Fuente de Piedra",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-22",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-065",
+      "nombre": "Paula Reyes Vidal",
+      "telefono": "+34 900 000 165",
+      "email": "cliente065@example.com",
+      "direccion": {
+        "via": "Avenida del Termostato, 4",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29730",
+        "coordenadasDemo": [
+          -4.279,
+          36.716
+        ],
+        "localidad": "Rincón de la Victoria",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-23",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-066",
+      "nombre": "Sergio Marín Núñez",
+      "telefono": "+34 900 000 166",
+      "email": "cliente066@example.com",
+      "direccion": {
+        "via": "Calle de la Llave, 11",
+        "pisoPuerta": "2.º C",
+        "codigoPostal": "29700",
+        "coordenadasDemo": [
+          -4.1,
+          36.782
+        ],
+        "localidad": "Vélez-Málaga",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-24",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-067",
+      "nombre": "Carla Arias Gil",
+      "telefono": "+34 900 000 167",
+      "email": "cliente067@example.com",
+      "direccion": {
+        "via": "Camino del Quemador, 18",
+        "pisoPuerta": "",
+        "codigoPostal": "29770",
+        "coordenadasDemo": [
+          -3.952,
+          36.757
+        ],
+        "localidad": "Torrox",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-11-25",
+      "revisiones": []
+    },
+    {
+      "id": "CL-068",
+      "nombre": "Jaime Cano Suárez",
+      "telefono": "+34 900 000 168",
+      "email": "cliente068@example.com",
+      "direccion": {
+        "via": "Paseo de la Caldera, 25",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29780",
+        "coordenadasDemo": [
+          -3.877,
+          36.747
+        ],
+        "localidad": "Nerja",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-26",
+          "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-069",
+      "nombre": "Teresa Santos Mora",
+      "telefono": "+34 900 000 169",
+      "email": "cliente069@example.com",
+      "direccion": {
+        "via": "Calle del Circuito, 32",
+        "pisoPuerta": "Bajo",
+        "codigoPostal": "29788",
+        "coordenadasDemo": [
+          -3.898,
+          36.789
+        ],
+        "localidad": "Frigiliana",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-09-16",
+      "revisiones": [
+        {
+          "fecha": "2025-11-27",
+          "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
+        }
+      ]
     }
   ]
 }

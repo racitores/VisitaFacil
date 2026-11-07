@@ -1,4 +1,5 @@
 import { MAX_PARADAS, optimizarOrden } from './optimizacion.mjs';
+import { coordenadasCliente } from './zonas.mjs';
 
 const form = document.querySelector('#route-form');
 const origin = document.querySelector('#route-origin');
@@ -53,7 +54,7 @@ function invalidate() {
 export function actualizarParadas(clientes) {
   stops = clientes;
   count.textContent = clientes.length > MAX_PARADAS
-    ? 'Selecciona un máximo de ' + MAX_PARADAS + ' visitas por ruta.'
+    ? 'Carga una jornada o selecciona un máximo de ' + MAX_PARADAS + ' visitas.'
     : clientes.length + (clientes.length === 1 ? ' visita seleccionada' : ' visitas seleccionadas');
   invalidate();
 }
@@ -217,9 +218,10 @@ form.addEventListener('submit', async event => {
     const points = [{ ...first, name: 'Origen' }];
     for (const client of stops) {
       const address = clientAddress(client.direccion);
-      const location = validPoint(client.direccion.coordenadasDemo)
-        ? { point: client.direccion.coordenadasDemo, label: client.direccion.localidad + ' · ubicación de prueba' }
-        : await locate(address, signal);
+      const point = coordenadasCliente(client);
+      const label = client.direccion.coordenadas
+        ? address : client.direccion.localidad + ' · ubicación de prueba';
+      const location = point ? { point, label } : await locate(address, signal);
       points.push({ ...location, name: client.nombre });
     }
     points.push({ ...last, name: 'Destino' });
