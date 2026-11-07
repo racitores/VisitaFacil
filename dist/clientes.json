@@ -8,10 +8,10 @@
       "direccion": {
         "via": "Calle del Quemador, 18",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2023-02-14",
@@ -29,10 +29,10 @@
       "direccion": {
         "via": "Avenida del Circuito, 42",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-07-10",
@@ -49,10 +49,10 @@
       "direccion": {
         "via": "Paseo de la Válvula, 7",
         "pisoPuerta": "",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-03-03",
@@ -69,10 +69,10 @@
       "direccion": {
         "via": "Calle del Manómetro, 13",
         "pisoPuerta": "Bajo C",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-10-21",
@@ -88,10 +88,10 @@
       "direccion": {
         "via": "Plaza del Termostato, 5",
         "pisoPuerta": "3.º D",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2026-04-08",
@@ -105,10 +105,10 @@
       "direccion": {
         "via": "Camino del Intercambiador, 24",
         "pisoPuerta": "",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-11-05",
@@ -126,10 +126,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 7",
         "pisoPuerta": "",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-01-01",
@@ -148,10 +148,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 8",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-01-01",
@@ -170,10 +170,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 9",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-01-24",
@@ -187,10 +187,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 10",
         "pisoPuerta": "",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-02-01",
@@ -209,10 +209,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 11",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-02-01",
@@ -231,10 +231,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 12",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-02-24",
@@ -248,10 +248,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 13",
         "pisoPuerta": "",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-03-01",
@@ -270,10 +270,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 14",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-03-01",
@@ -292,10 +292,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 15",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-03-24",
@@ -309,10 +309,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 16",
         "pisoPuerta": "",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-04-01",
@@ -331,10 +331,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 17",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-04-01",
@@ -353,10 +353,10 @@
       "direccion": {
         "via": "Camino del Caudal, 18",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-04-24",
@@ -370,10 +370,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 19",
         "pisoPuerta": "",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-05-01",
@@ -392,10 +392,10 @@
       "direccion": {
         "via": "Camino del Caudal, 20",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-05-01",
@@ -414,10 +414,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 21",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-05-24",
@@ -431,10 +431,10 @@
       "direccion": {
         "via": "Camino del Caudal, 22",
         "pisoPuerta": "",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-06-01",
@@ -453,10 +453,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 23",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-06-01",
@@ -475,10 +475,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 24",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-06-24",
@@ -492,10 +492,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 25",
         "pisoPuerta": "",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-07-01",
@@ -514,10 +514,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 26",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-07-01",
@@ -536,10 +536,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 27",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-07-24",
@@ -553,10 +553,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 28",
         "pisoPuerta": "",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-08-01",
@@ -575,10 +575,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 29",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-08-01",
@@ -597,10 +597,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 30",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-08-24",
@@ -614,10 +614,10 @@
       "direccion": {
         "via": "Paseo del Filtro, 31",
         "pisoPuerta": "",
-        "codigoPostal": "29640",
-        "coordenadasDemo": [-4.625, 36.545],
-        "localidad": "Fuengirola",
-        "provincia": "Málaga",
+        "codigoPostal": "28931",
+        "coordenadasDemo": [-3.865, 40.323],
+        "localidad": "Móstoles",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-01",
@@ -636,10 +636,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 32",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-01",
@@ -658,10 +658,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 33",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-09-24",
@@ -675,10 +675,10 @@
       "direccion": {
         "via": "Calle de la Bomba, 34",
         "pisoPuerta": "",
-        "codigoPostal": "29650",
-        "coordenadasDemo": [-4.638, 36.594],
-        "localidad": "Mijas",
-        "provincia": "Málaga",
+        "codigoPostal": "28231",
+        "coordenadasDemo": [-3.873, 40.493],
+        "localidad": "Las Rozas de Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-10-01",
@@ -697,10 +697,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 35",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-10-01",
@@ -719,10 +719,10 @@
       "direccion": {
         "via": "Camino del Caudal, 36",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-10-24",
@@ -736,10 +736,10 @@
       "direccion": {
         "via": "Plaza del Retorno, 37",
         "pisoPuerta": "",
-        "codigoPostal": "29010",
-        "coordenadasDemo": [-4.446, 36.725],
-        "localidad": "Málaga",
-        "provincia": "Málaga",
+        "codigoPostal": "28801",
+        "coordenadasDemo": [-3.365, 40.482],
+        "localidad": "Alcalá de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-11-01",
@@ -758,10 +758,10 @@
       "direccion": {
         "via": "Camino del Caudal, 38",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-11-01",
@@ -780,10 +780,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 39",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-24",
@@ -797,10 +797,10 @@
       "direccion": {
         "via": "Camino del Caudal, 40",
         "pisoPuerta": "",
-        "codigoPostal": "29130",
-        "coordenadasDemo": [-4.564, 36.66],
-        "localidad": "Alhaurín de la Torre",
-        "provincia": "Málaga",
+        "codigoPostal": "28100",
+        "coordenadasDemo": [-3.635, 40.545],
+        "localidad": "Alcobendas",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-12-01",
@@ -819,10 +819,10 @@
       "direccion": {
         "via": "Calle de la Sonda, 41",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29631",
-        "coordenadasDemo": [-4.535, 36.598],
-        "localidad": "Arroyo de la Miel",
-        "provincia": "Málaga",
+        "codigoPostal": "28005",
+        "coordenadasDemo": [-3.711, 40.411],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-12-01",
@@ -841,10 +841,10 @@
       "direccion": {
         "via": "Avenida del Regulador, 42",
         "pisoPuerta": "2.º B",
-        "codigoPostal": "29620",
-        "coordenadasDemo": [-4.501, 36.624],
-        "localidad": "Torremolinos",
-        "provincia": "Málaga",
+        "codigoPostal": "28911",
+        "coordenadasDemo": [-3.767, 40.328],
+        "localidad": "Leganés",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-12-24",
@@ -858,13 +858,13 @@
       "direccion": {
         "via": "Calle del Depósito, 3",
         "pisoPuerta": "",
-        "codigoPostal": "29400",
+        "codigoPostal": "28200",
         "coordenadasDemo": [
-          -5.167,
-          36.743
+          -4.147,
+          40.591
         ],
-        "localidad": "Ronda",
-        "provincia": "Málaga",
+        "localidad": "San Lorenzo de El Escorial",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-01",
@@ -878,13 +878,13 @@
       "direccion": {
         "via": "Avenida de la Sonda, 10",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29350",
+        "codigoPostal": "28280",
         "coordenadasDemo": [
-          -5.138,
-          36.8
+          -4.122,
+          40.584
         ],
-        "localidad": "Arriate",
-        "provincia": "Málaga",
+        "localidad": "El Escorial",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -903,13 +903,13 @@
       "direccion": {
         "via": "Paseo del Retorno, 17",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29370",
+        "codigoPostal": "28400",
         "coordenadasDemo": [
-          -5.252,
-          36.719
+          -4.003,
+          40.638
         ],
-        "localidad": "Benaoján",
-        "provincia": "Málaga",
+        "localidad": "Collado Villalba",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -928,13 +928,13 @@
       "direccion": {
         "via": "Camino de la Presión, 24",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29380",
+        "codigoPostal": "28260",
         "coordenadasDemo": [
-          -5.343,
-          36.616
+          -4.004,
+          40.578
         ],
-        "localidad": "Cortes de la Frontera",
-        "provincia": "Málaga",
+        "localidad": "Galapagar",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -953,13 +953,13 @@
       "direccion": {
         "via": "Plaza del Regulador, 31",
         "pisoPuerta": "",
-        "codigoPostal": "29480",
+        "codigoPostal": "28250",
         "coordenadasDemo": [
-          -5.317,
-          36.518
+          -3.93,
+          40.577
         ],
-        "localidad": "Gaucín",
-        "provincia": "Málaga",
+        "localidad": "Torrelodones",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-05",
@@ -973,13 +973,13 @@
       "direccion": {
         "via": "Calle del Calor, 38",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29691",
+        "codigoPostal": "28600",
         "coordenadasDemo": [
-          -5.25,
-          36.377
+          -4.014,
+          40.287
         ],
-        "localidad": "Manilva",
-        "provincia": "Málaga",
+        "localidad": "Navalcarnero",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -998,13 +998,13 @@
       "direccion": {
         "via": "Avenida del Radiador, 45",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29680",
+        "codigoPostal": "28670",
         "coordenadasDemo": [
-          -5.151,
-          36.426
+          -3.903,
+          40.357
         ],
-        "localidad": "Estepona",
-        "provincia": "Málaga",
+        "localidad": "Villaviciosa de Odón",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1023,13 +1023,13 @@
       "direccion": {
         "via": "Camino del Termómetro, 52",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29690",
+        "codigoPostal": "28660",
         "coordenadasDemo": [
-          -5.273,
-          36.443
+          -3.879,
+          40.407
         ],
-        "localidad": "Casares",
-        "provincia": "Málaga",
+        "localidad": "Boadilla del Monte",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1048,13 +1048,13 @@
       "direccion": {
         "via": "Paseo de la Sonda, 8",
         "pisoPuerta": "",
-        "codigoPostal": "29601",
+        "codigoPostal": "28223",
         "coordenadasDemo": [
-          -4.887,
-          36.51
+          -3.812,
+          40.435
         ],
-        "localidad": "Marbella",
-        "provincia": "Málaga",
+        "localidad": "Pozuelo de Alarcón",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-09",
@@ -1068,13 +1068,13 @@
       "direccion": {
         "via": "Calle del Calderín, 15",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29610",
+        "codigoPostal": "28220",
         "coordenadasDemo": [
-          -4.854,
-          36.565
+          -3.869,
+          40.473
         ],
-        "localidad": "Ojén",
-        "provincia": "Málaga",
+        "localidad": "Majadahonda",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1093,13 +1093,13 @@
       "direccion": {
         "via": "Cuesta del Filtro, 22",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29611",
+        "codigoPostal": "28691",
         "coordenadasDemo": [
-          -4.95,
-          36.582
+          -4.004,
+          40.447
         ],
-        "localidad": "Istán",
-        "provincia": "Málaga",
+        "localidad": "Villanueva de la Cañada",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1118,13 +1118,13 @@
       "direccion": {
         "via": "Avenida del Caudal, 29",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29100",
+        "codigoPostal": "28901",
         "coordenadasDemo": [
-          -4.757,
-          36.659
+          -3.732,
+          40.309
         ],
-        "localidad": "Coín",
-        "provincia": "Málaga",
+        "localidad": "Getafe",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1143,13 +1143,13 @@
       "direccion": {
         "via": "Paseo de la Presión, 36",
         "pisoPuerta": "",
-        "codigoPostal": "29500",
+        "codigoPostal": "28941",
         "coordenadasDemo": [
-          -4.705,
-          36.823
+          -3.793,
+          40.282
         ],
-        "localidad": "Álora",
-        "provincia": "Málaga",
+        "localidad": "Fuenlabrada",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-13",
@@ -1163,13 +1163,13 @@
       "direccion": {
         "via": "Calle del Mezclador, 43",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29570",
+        "codigoPostal": "28320",
         "coordenadasDemo": [
-          -4.63,
-          36.711
+          -3.699,
+          40.242
         ],
-        "localidad": "Cártama",
-        "provincia": "Málaga",
+        "localidad": "Pinto",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1188,13 +1188,13 @@
       "direccion": {
         "via": "Calle de la Tubería, 50",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29560",
+        "codigoPostal": "28341",
         "coordenadasDemo": [
-          -4.707,
-          36.766
+          -3.678,
+          40.19
         ],
-        "localidad": "Pizarra",
-        "provincia": "Málaga",
+        "localidad": "Valdemoro",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1213,13 +1213,13 @@
       "direccion": {
         "via": "Camino del Radiador, 6",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29150",
+        "codigoPostal": "28981",
         "coordenadasDemo": [
-          -4.542,
-          36.826
+          -3.771,
+          40.239
         ],
-        "localidad": "Almogía",
-        "provincia": "Málaga",
+        "localidad": "Parla",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1238,13 +1238,13 @@
       "direccion": {
         "via": "Plaza de la Bomba, 13",
         "pisoPuerta": "",
-        "codigoPostal": "29566",
+        "codigoPostal": "28300",
         "coordenadasDemo": [
-          -4.84,
-          36.786
+          -3.603,
+          40.032
         ],
-        "localidad": "Casarabonela",
-        "provincia": "Málaga",
+        "localidad": "Aranjuez",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-17",
@@ -1258,13 +1258,13 @@
       "direccion": {
         "via": "Calle del Acumulador, 20",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29200",
+        "codigoPostal": "28770",
         "coordenadasDemo": [
-          -4.559,
-          37.02
+          -3.767,
+          40.659
         ],
-        "localidad": "Antequera",
-        "provincia": "Málaga",
+        "localidad": "Colmenar Viejo",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1283,13 +1283,13 @@
       "direccion": {
         "via": "Avenida de la Válvula, 27",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29300",
+        "codigoPostal": "28760",
         "coordenadasDemo": [
-          -4.388,
-          37.096
+          -3.711,
+          40.604
         ],
-        "localidad": "Archidona",
-        "provincia": "Málaga",
+        "localidad": "Tres Cantos",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1308,13 +1308,13 @@
       "direccion": {
         "via": "Calle del Sensor, 34",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29320",
+        "codigoPostal": "28701",
         "coordenadasDemo": [
-          -4.861,
-          37.047
+          -3.626,
+          40.558
         ],
-        "localidad": "Campillos",
-        "provincia": "Málaga",
+        "localidad": "San Sebastián de los Reyes",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1333,13 +1333,13 @@
       "direccion": {
         "via": "Paseo del Intercambiador, 41",
         "pisoPuerta": "",
-        "codigoPostal": "29327",
+        "codigoPostal": "28791",
         "coordenadasDemo": [
-          -4.92,
-          36.984
+          -3.781,
+          40.753
         ],
-        "localidad": "Teba",
-        "provincia": "Málaga",
+        "localidad": "Soto del Real",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-21",
@@ -1353,13 +1353,13 @@
       "direccion": {
         "via": "Plaza de la Sonda, 48",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29520",
+        "codigoPostal": "28410",
         "coordenadasDemo": [
-          -4.729,
-          37.135
+          -3.863,
+          40.727
         ],
-        "localidad": "Fuente de Piedra",
-        "provincia": "Málaga",
+        "localidad": "Manzanares el Real",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1378,13 +1378,13 @@
       "direccion": {
         "via": "Avenida del Termostato, 4",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29730",
+        "codigoPostal": "28850",
         "coordenadasDemo": [
-          -4.279,
-          36.716
+          -3.478,
+          40.455
         ],
-        "localidad": "Rincón de la Victoria",
-        "provincia": "Málaga",
+        "localidad": "Torrejón de Ardoz",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1403,13 +1403,13 @@
       "direccion": {
         "via": "Calle de la Llave, 11",
         "pisoPuerta": "2.º C",
-        "codigoPostal": "29700",
+        "codigoPostal": "28821",
         "coordenadasDemo": [
-          -4.1,
-          36.782
+          -3.557,
+          40.424
         ],
-        "localidad": "Vélez-Málaga",
-        "provincia": "Málaga",
+        "localidad": "Coslada",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1428,13 +1428,13 @@
       "direccion": {
         "via": "Camino del Quemador, 18",
         "pisoPuerta": "",
-        "codigoPostal": "29770",
+        "codigoPostal": "28830",
         "coordenadasDemo": [
-          -3.952,
-          36.757
+          -3.534,
+          40.424
         ],
-        "localidad": "Torrox",
-        "provincia": "Málaga",
+        "localidad": "San Fernando de Henares",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2025-11-25",
@@ -1448,13 +1448,13 @@
       "direccion": {
         "via": "Paseo de la Caldera, 25",
         "pisoPuerta": "1.º A",
-        "codigoPostal": "29780",
+        "codigoPostal": "28522",
         "coordenadasDemo": [
-          -3.877,
-          36.747
+          -3.538,
+          40.358
         ],
-        "localidad": "Nerja",
-        "provincia": "Málaga",
+        "localidad": "Rivas-Vaciamadrid",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
@@ -1473,13 +1473,13 @@
       "direccion": {
         "via": "Calle del Circuito, 32",
         "pisoPuerta": "Bajo",
-        "codigoPostal": "29788",
+        "codigoPostal": "28500",
         "coordenadasDemo": [
-          -3.898,
-          36.789
+          -3.443,
+          40.302
         ],
-        "localidad": "Frigiliana",
-        "provincia": "Málaga",
+        "localidad": "Arganda del Rey",
+        "provincia": "Madrid",
         "pais": "España"
       },
       "fechaAlta": "2024-09-16",
