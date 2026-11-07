@@ -24,7 +24,7 @@ La pantalla mensual calcula el siguiente vencimiento de cada cliente sumando un 
 
 ## Planificador de ruta
 
-En Revisiones pendientes, selecciona las visitas del mes e introduce origen y destino. Con el destino vacío se calcula la vuelta al origen. Si no se puede verificar un portal de origen o destino, se indica cuando se usa un punto aproximado de esa calle. Los campos aceptan direcciones o coordenadas en formato `latitud, longitud`. La opción de recordar guarda los extremos en el navegador.
+En Revisiones pendientes, selecciona las visitas del mes e introduce origen y destino. Con el destino vacío se calcula la vuelta al origen. Si no se puede verificar un portal de origen o destino, se indica cuando se usa un punto aproximado de esa calle. Los campos aceptan direcciones o coordenadas en formato `latitud, longitud`. El botón «Usar mi ubicación» pide permiso al navegador y rellena el origen con las coordenadas del dispositivo. La opción de recordar conserva el último origen y destino en el mismo navegador. Al desmarcarla, se borran las ubicaciones guardadas y se conserva esa preferencia.
 
 El planificador consulta a Photon para las direcciones y a OSRM/FOSSGIS para las distancias y tiempos estimados por carretera. Evalúa todos los órdenes posibles mediante programación dinámica, hasta 14 visitas por cálculo, y minimiza la suma de los kilómetros de los trayectos que OSRM propone entre puntos. La comparación usa el orden del listado mensual. No contempla tráfico en directo, peajes, horarios ni tiempo en casa del cliente. Las coordenadas de demostración son puntos aproximados por municipio y se usan en lugar de las calles ficticias del JSON. Los servicios externos se consultan al pulsar «Calcular ruta».
 

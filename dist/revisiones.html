@@ -61,10 +61,14 @@
       <button id="route-reset" class="zone-button" type="button" hidden>Volver a la selección del mes</button>
       <form id="route-form">
         <div class="route-fields">
-          <label>Origen <input id="route-origin" placeholder="Dirección o latitud, longitud" required maxlength="200"></label>
+          <div>
+            <label>Origen <input id="route-origin" placeholder="Dirección o latitud, longitud" required maxlength="200"></label>
+            <button id="route-gps" class="zone-button" type="button">Usar mi ubicación</button>
+            <p id="route-gps-status" class="status" role="status"></p>
+          </div>
           <label>Destino <input id="route-destination" placeholder="Mismo punto que el origen" maxlength="200"></label>
         </div>
-        <label class="route-remember"><input id="route-remember" type="checkbox" checked> Recordar en este navegador</label>
+        <label class="route-remember"><input id="route-remember" type="checkbox" checked> Recordar el último origen y destino en este navegador</label>
         <p class="route-note">Al calcular, las direcciones se consultan en Photon y las coordenadas se envían a OSRM. Las ubicaciones de los clientes ficticios son aproximadas.</p>
         <div class="route-actions">
           <button id="route-submit" type="submit" disabled>Calcular ruta</button>

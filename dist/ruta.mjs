@@ -4,6 +4,8 @@ import { coordenadasCliente } from './zonas.mjs';
 const form = document.querySelector('#route-form');
 const origin = document.querySelector('#route-origin');
 const destination = document.querySelector('#route-destination');
+const gps = document.querySelector('#route-gps');
+const gpsStatus = document.querySelector('#route-gps-status');
 const remember = document.querySelector('#route-remember');
 const submit = document.querySelector('#route-submit');
 const count = document.querySelector('#route-count');
@@ -14,21 +16,27 @@ const km = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 1 });
 const geocoded = new Map();
 let stops = [];
 let activeRequest;
+let gpsRequest = 0;
 let lastRoutingRequest = -Infinity;
 
-try {
-  const initial = new URLSearchParams(location.hash.slice(1)).get('base');
-  if (initial?.trim()) {
-    origin.value = destination.value = initial.trim().slice(0, 200);
-    history.replaceState(history.state, '', location.pathname + location.search + '#planificador');
-    saveEndpoints();
-  } else {
-    const saved = JSON.parse(localStorage.getItem(storageKey));
-    origin.value = saved?.origin ?? '';
-    destination.value = saved?.destination ?? '';
+function readEndpoints() {
+  try {
+    return JSON.parse(localStorage.getItem(storageKey));
+  } catch {
+    return null;
   }
-} catch {
-  // El formulario también funciona si el navegador bloquea el almacenamiento.
+}
+
+const saved = readEndpoints();
+remember.checked = saved?.remember !== false;
+const initial = new URLSearchParams(location.hash.slice(1)).get('base')?.trim();
+if (initial) {
+  origin.value = destination.value = initial.slice(0, 200);
+  history.replaceState(history.state, '', location.pathname + location.search + '#planificador');
+  saveEndpoints();
+} else {
+  origin.value = saved?.origin ?? '';
+  destination.value = saved?.destination ?? '';
 }
 
 function saveEndpoints() {
@@ -36,7 +44,7 @@ function saveEndpoints() {
     if (remember.checked) {
       localStorage.setItem(storageKey, JSON.stringify({ origin: origin.value, destination: destination.value }));
     } else {
-      localStorage.removeItem(storageKey);
+      localStorage.setItem(storageKey, JSON.stringify({ remember: false }));
     }
   } catch {
     // Se mantienen los valores del formulario durante esta sesión.
@@ -190,10 +198,46 @@ function renderRoute(points, order, distances, durations) {
   result.replaceChildren(...parts, items);
 }
 
-form.addEventListener('input', event => {
-  if (event.target === remember) saveEndpoints();
-  else invalidate();
+gps.addEventListener('click', () => {
+  if (!navigator.geolocation) {
+    gpsStatus.textContent = 'Este navegador no puede usar la ubicación. Introduce el origen a mano.';
+    return;
+  }
+  const request = ++gpsRequest;
+  gps.disabled = true;
+  gpsStatus.textContent = 'Buscando tu ubicación…';
+
+  navigator.geolocation.getCurrentPosition(({ coords }) => {
+    if (request !== gpsRequest) return;
+    origin.value = coords.latitude.toFixed(5) + ', ' + coords.longitude.toFixed(5);
+    invalidate();
+    saveEndpoints();
+    gps.disabled = false;
+    gpsStatus.textContent = 'Ubicación añadida como origen.';
+  }, error => {
+    if (request !== gpsRequest) return;
+    gps.disabled = false;
+    gpsStatus.textContent = error.code === 1
+      ? 'Permite el acceso a la ubicación o introduce el origen a mano.'
+      : 'No se pudo obtener tu ubicación. Inténtalo de nuevo o introduce el origen a mano.';
+  }, { enableHighAccuracy: true, maximumAge: 0, timeout: 12000 });
 });
+
+form.addEventListener('input', event => {
+  if (event.target === remember) {
+    saveEndpoints();
+    return;
+  }
+  if (event.target === origin) {
+    gpsRequest++;
+    gps.disabled = false;
+    gpsStatus.textContent = '';
+  }
+  invalidate();
+});
+
+origin.addEventListener('change', saveEndpoints);
+destination.addEventListener('change', saveEndpoints);
 
 form.addEventListener('submit', async event => {
   event.preventDefault();

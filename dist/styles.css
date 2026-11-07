@@ -106,6 +106,10 @@ footer span { padding-inline: 5px; }
 .route-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .route-fields label { display: grid; gap: 4px; font-size: .84rem; font-weight: 650; }
 .route-fields input { min-width: 0; width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; color: inherit; font: inherit; }
+#route-gps { margin-top: 6px; min-height: 36px; }
+#route-gps:disabled { opacity: .6; cursor: wait; }
+#route-gps-status:empty { margin: 0; }
+#route-gps-status:not(:empty) { margin-top: 4px; }
 .route-remember { display: inline-flex; align-items: center; gap: 6px; margin-block: 10px; font-size: .83rem; }
 .route-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 9px 12px; }
 .route-actions button { border: 0; border-radius: 8px; padding: 9px 12px; font: inherit; font-weight: 650; background: var(--accent); color: white; cursor: pointer; }
