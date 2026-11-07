@@ -1,0 +1,116 @@
+{
+  "clientes": [
+    {
+      "id": "CL-001",
+      "nombre": "Lucía Mendoza Ruiz",
+      "telefono": "+34 900 000 101",
+      "email": "lucia.mendoza@example.com",
+      "direccion": {
+        "via": "Calle del Quemador, 18",
+        "pisoPuerta": "2.º B",
+        "codigoPostal": "29631",
+        "localidad": "Arroyo de la Miel",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2023-02-14",
+      "revisiones": [
+        {"fecha": "2024-02-15", "descripcion": "Limpieza del quemador y comprobación del encendido."},
+        {"fecha": "2025-02-20", "descripcion": "Revisión anual y comprobación de la evacuación de gases."},
+        {"fecha": "2026-02-18", "descripcion": "Revisión de la caldera y ajuste de la presión del circuito de calefacción."}
+      ]
+    },
+    {
+      "id": "CL-002",
+      "nombre": "Javier Ortega Salas",
+      "telefono": "+34 900 000 102",
+      "email": "javier.ortega@example.com",
+      "direccion": {
+        "via": "Avenida del Circuito, 42",
+        "pisoPuerta": "1.º A",
+        "codigoPostal": "29620",
+        "localidad": "Torremolinos",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-07-10",
+      "revisiones": [
+        {"fecha": "2024-07-12", "descripcion": "Inspección inicial del calentador y comprobación del agua caliente."},
+        {"fecha": "2026-01-19", "descripcion": "Sustitución del sensor de temperatura y prueba de funcionamiento."}
+      ]
+    },
+    {
+      "id": "CL-003",
+      "nombre": "María Vidal Torres",
+      "telefono": "+34 900 000 103",
+      "email": "maria.vidal@example.com",
+      "direccion": {
+        "via": "Paseo de la Válvula, 7",
+        "pisoPuerta": "",
+        "codigoPostal": "29640",
+        "localidad": "Fuengirola",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-03-03",
+      "revisiones": [
+        {"fecha": "2025-03-06", "descripcion": "Comprobación del termostato y prueba del arranque de la calefacción."},
+        {"fecha": "2026-03-05", "descripcion": "Revisión anual, limpieza del filtro y prueba del agua caliente."}
+      ]
+    },
+    {
+      "id": "CL-004",
+      "nombre": "Antonio Navarro Gil",
+      "telefono": "+34 900 000 104",
+      "email": "antonio.navarro@example.com",
+      "direccion": {
+        "via": "Calle del Manómetro, 13",
+        "pisoPuerta": "Bajo C",
+        "codigoPostal": "29650",
+        "localidad": "Mijas",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2025-10-21",
+      "revisiones": [
+        {"fecha": "2025-10-24", "descripcion": "Revisión del calentador de gas y comprobación del caudal de agua caliente."}
+      ]
+    },
+    {
+      "id": "CL-005",
+      "nombre": "Elena Campos León",
+      "telefono": "+34 900 000 105",
+      "email": "elena.campos@example.com",
+      "direccion": {
+        "via": "Plaza del Termostato, 5",
+        "pisoPuerta": "3.º D",
+        "codigoPostal": "29010",
+        "localidad": "Málaga",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2026-04-08",
+      "revisiones": []
+    },
+    {
+      "id": "CL-006",
+      "nombre": "Pablo Romero Díaz",
+      "telefono": "+34 900 000 106",
+      "email": "pablo.romero@example.com",
+      "direccion": {
+        "via": "Camino del Intercambiador, 24",
+        "pisoPuerta": "",
+        "codigoPostal": "29130",
+        "localidad": "Alhaurín de la Torre",
+        "provincia": "Málaga",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-11-05",
+      "revisiones": [
+        {"fecha": "2024-11-08", "descripcion": "Inspección inicial y registro de la instalación."},
+        {"fecha": "2025-11-11", "descripcion": "Revisión anual y comprobación del funcionamiento de la calefacción."},
+        {"fecha": "2026-02-06", "descripcion": "Diagnóstico de pérdida de presión y sustitución de la junta de una conexión."}
+      ]
+    }
+  ]
+}
