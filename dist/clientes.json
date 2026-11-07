@@ -1489,6 +1489,506 @@
           "descripcion": "Revisión del calentador y comprobación del caudal de agua caliente."
         }
       ]
+    },
+    {
+      "id": "CL-070",
+      "nombre": "Amanda Navarro Gil",
+      "telefono": "+34 900 000 170",
+      "email": "cliente070@example.com",
+      "direccion": {
+        "via": "Calle Rafael Finat, 51",
+        "pisoPuerta": "",
+        "codigoPostal": "28044",
+        "coordenadasDemo": [
+          -3.769439,
+          40.379442
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-01",
+          "descripcion": "Revisión anual de la caldera y prueba de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-071",
+      "nombre": "Bruno Sánchez Vela",
+      "telefono": "+34 900 000 171",
+      "email": "cliente071@example.com",
+      "direccion": {
+        "via": "Calle Doctor Esquerdo, 189",
+        "pisoPuerta": "",
+        "codigoPostal": "28007",
+        "coordenadasDemo": [
+          -3.672409,
+          40.403578
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-02",
+          "descripcion": "Limpieza del quemador y comprobación del agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-072",
+      "nombre": "Celia Ortiz Rubio",
+      "telefono": "+34 900 000 172",
+      "email": "cliente072@example.com",
+      "direccion": {
+        "via": "Calle Abertura, 2",
+        "pisoPuerta": "",
+        "codigoPostal": "28033",
+        "coordenadasDemo": [
+          -3.64962,
+          40.477193
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-04",
+          "descripcion": "Comprobación del encendido y ajuste de la presión del circuito."
+        }
+      ]
+    },
+    {
+      "id": "CL-073",
+      "nombre": "Darío Peña Mora",
+      "telefono": "+34 900 000 173",
+      "email": "cliente073@example.com",
+      "direccion": {
+        "via": "Calle Corregidor Alonso de Tobar, 5",
+        "pisoPuerta": "",
+        "codigoPostal": "28030",
+        "coordenadasDemo": [
+          -3.649438,
+          40.403992
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-05",
+          "descripcion": "Revisión del calentador y comprobación de la evacuación de gases."
+        }
+      ]
+    },
+    {
+      "id": "CL-074",
+      "nombre": "Elsa Vicente Ríos",
+      "telefono": "+34 900 000 174",
+      "email": "cliente074@example.com",
+      "direccion": {
+        "via": "Calle Quintana, 9",
+        "pisoPuerta": "",
+        "codigoPostal": "28008",
+        "coordenadasDemo": [
+          -3.716951,
+          40.427947
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-07",
+          "descripcion": "Revisión anual de la caldera y prueba de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-075",
+      "nombre": "Felipe Blanco Vega",
+      "telefono": "+34 900 000 175",
+      "email": "cliente075@example.com",
+      "direccion": {
+        "via": "Avenida Rafaela Ybarra, 43",
+        "pisoPuerta": "",
+        "codigoPostal": "28026",
+        "coordenadasDemo": [
+          -3.710616,
+          40.381882
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-08",
+          "descripcion": "Limpieza del quemador y comprobación del agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-076",
+      "nombre": "Gemma Cano Alba",
+      "telefono": "+34 900 000 176",
+      "email": "cliente076@example.com",
+      "direccion": {
+        "via": "Calle Felipe el Hermoso, 4",
+        "pisoPuerta": "",
+        "codigoPostal": "28010",
+        "coordenadasDemo": [
+          -3.699666,
+          40.4354
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-10",
+          "descripcion": "Comprobación del encendido y ajuste de la presión del circuito."
+        }
+      ]
+    },
+    {
+      "id": "CL-077",
+      "nombre": "Héctor Paz Serra",
+      "telefono": "+34 900 000 177",
+      "email": "cliente077@example.com",
+      "direccion": {
+        "via": "Plaza Antonio María Segovia, 2",
+        "pisoPuerta": "",
+        "codigoPostal": "28031",
+        "coordenadasDemo": [
+          -3.613673,
+          40.38092
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-11",
+          "descripcion": "Revisión del calentador y comprobación de la evacuación de gases."
+        }
+      ]
+    },
+    {
+      "id": "CL-078",
+      "nombre": "Irene Costa Luque",
+      "telefono": "+34 900 000 178",
+      "email": "cliente078@example.com",
+      "direccion": {
+        "via": "Calle Antonia Rodríguez Sacristan, 7",
+        "pisoPuerta": "",
+        "codigoPostal": "28044",
+        "coordenadasDemo": [
+          -3.748071,
+          40.373426
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-13",
+          "descripcion": "Revisión anual de la caldera y prueba de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-079",
+      "nombre": "Jaime Rey Montes",
+      "telefono": "+34 900 000 179",
+      "email": "cliente079@example.com",
+      "direccion": {
+        "via": "Calle Villalonso, 16",
+        "pisoPuerta": "",
+        "codigoPostal": "28021",
+        "coordenadasDemo": [
+          -3.710116,
+          40.349525
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-14",
+          "descripcion": "Limpieza del quemador y comprobación del agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-080",
+      "nombre": "Lidia Campos Roca",
+      "telefono": "+34 900 000 180",
+      "email": "cliente080@example.com",
+      "direccion": {
+        "via": "Avenida Rafael Alberti, 36",
+        "pisoPuerta": "",
+        "codigoPostal": "28018",
+        "coordenadasDemo": [
+          -3.642918,
+          40.384497
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-16",
+          "descripcion": "Comprobación del encendido y ajuste de la presión del circuito."
+        }
+      ]
+    },
+    {
+      "id": "CL-081",
+      "nombre": "Marcos Soler Ruiz",
+      "telefono": "+34 900 000 181",
+      "email": "cliente081@example.com",
+      "direccion": {
+        "via": "Calle Conde Duque, 9",
+        "pisoPuerta": "",
+        "codigoPostal": "28015",
+        "coordenadasDemo": [
+          -3.7106,
+          40.427387
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-17",
+          "descripcion": "Revisión del calentador y comprobación de la evacuación de gases."
+        }
+      ]
+    },
+    {
+      "id": "CL-082",
+      "nombre": "Nadia Flores Martín",
+      "telefono": "+34 900 000 182",
+      "email": "cliente082@example.com",
+      "direccion": {
+        "via": "Calle Hermanos García Noblejas, 14",
+        "pisoPuerta": "",
+        "codigoPostal": "28037",
+        "coordenadasDemo": [
+          -3.637292,
+          40.436447
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-19",
+          "descripcion": "Revisión anual de la caldera y prueba de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-083",
+      "nombre": "Óscar Vidal Mena",
+      "telefono": "+34 900 000 183",
+      "email": "cliente083@example.com",
+      "direccion": {
+        "via": "Avenida Toreros, 5",
+        "pisoPuerta": "",
+        "codigoPostal": "28028",
+        "coordenadasDemo": [
+          -3.670929,
+          40.431993
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-20",
+          "descripcion": "Limpieza del quemador y comprobación del agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-084",
+      "nombre": "Pilar Nieto Sanz",
+      "telefono": "+34 900 000 184",
+      "email": "cliente084@example.com",
+      "direccion": {
+        "via": "Calle Manuel Ferrero, 1",
+        "pisoPuerta": "",
+        "codigoPostal": "28036",
+        "coordenadasDemo": [
+          -3.684611,
+          40.467453
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-22",
+          "descripcion": "Comprobación del encendido y ajuste de la presión del circuito."
+        }
+      ]
+    },
+    {
+      "id": "CL-085",
+      "nombre": "Raúl Iglesias Díaz",
+      "telefono": "+34 900 000 185",
+      "email": "cliente085@example.com",
+      "direccion": {
+        "via": "Bulevar Indalecio Prieto, 21",
+        "pisoPuerta": "",
+        "codigoPostal": "28032",
+        "coordenadasDemo": [
+          -3.621282,
+          40.399829
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-23",
+          "descripcion": "Revisión del calentador y comprobación de la evacuación de gases."
+        }
+      ]
+    },
+    {
+      "id": "CL-086",
+      "nombre": "Silvia Cordero Vera",
+      "telefono": "+34 900 000 186",
+      "email": "cliente086@example.com",
+      "direccion": {
+        "via": "Avenida Logroño, 179",
+        "pisoPuerta": "",
+        "codigoPostal": "28042",
+        "coordenadasDemo": [
+          -3.593746,
+          40.460559
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-25",
+          "descripcion": "Revisión anual de la caldera y prueba de la calefacción."
+        }
+      ]
+    },
+    {
+      "id": "CL-087",
+      "nombre": "Teo Rivas Sierra",
+      "telefono": "+34 900 000 187",
+      "email": "cliente087@example.com",
+      "direccion": {
+        "via": "Calle María Sevilla Diago, 15",
+        "pisoPuerta": "",
+        "codigoPostal": "28022",
+        "coordenadasDemo": [
+          -3.610566,
+          40.433292
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-26",
+          "descripcion": "Limpieza del quemador y comprobación del agua caliente."
+        }
+      ]
+    },
+    {
+      "id": "CL-088",
+      "nombre": "Vera Lozano Torres",
+      "telefono": "+34 900 000 188",
+      "email": "cliente088@example.com",
+      "direccion": {
+        "via": "Avenida Monforte de Lemos, 38",
+        "pisoPuerta": "",
+        "codigoPostal": "28029",
+        "coordenadasDemo": [
+          -3.709441,
+          40.478601
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-28",
+          "descripcion": "Comprobación del encendido y ajuste de la presión del circuito."
+        }
+      ]
+    },
+    {
+      "id": "CL-089",
+      "nombre": "Yago Cruz Medina",
+      "telefono": "+34 900 000 189",
+      "email": "cliente089@example.com",
+      "direccion": {
+        "via": "Calle Francos Rodríguez, 67",
+        "pisoPuerta": "",
+        "codigoPostal": "28039",
+        "coordenadasDemo": [
+          -3.71054,
+          40.457495
+        ],
+        "localidad": "Madrid",
+        "provincia": "Madrid",
+        "pais": "España"
+      },
+      "fechaAlta": "2024-10-15",
+      "revisiones": [
+        {
+          "fecha": "2025-11-30",
+          "descripcion": "Revisión del calentador y comprobación de la evacuación de gases."
+        }
+      ]
     }
   ]
 }
