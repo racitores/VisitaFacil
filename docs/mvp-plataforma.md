@@ -16,7 +16,7 @@ Sugerencia: devuelve una sola jornada compatible entre las existentes, la que te
 
 ## Activación en Vercel
 
-Preparado el 26/11/2026: `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET` y `CRON_SECRET` ya están guardadas para **Production** en `caldera-gestion`. Los secretos están marcados como sensibles. Falta conectar Neon; correo y WhatsApp requieren sus credenciales y configuración externa. No se han copiado secretos de producción a previews.
+Preparado el 26/11/2026: `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET` y `CRON_SECRET` ya están guardadas para **Production** en `caldera-gestion`. Los secretos están marcados como sensibles. Neon ya está conectado al proyecto `caldera-gestion` en Production: proyecto `visitafacil` (`bitter-lab-90677782`), rama `production`, PostgreSQL 17 en AWS Frankfurt. `DATABASE_URL` es agrupada y `DATABASE_URL_UNPOOLED` es directa para migraciones. Correo y WhatsApp requieren sus credenciales y configuración externa. No se han copiado secretos de producción a previews.
 
 
 Proyecto previsto: `racitores-projects/caldera-gestion`. El repositorio también tiene conectado `caldera-gestion-dist`: conviene conservar un único despliegue de producción para evitar confusiones. No cambiar el Root Directory del proyecto: debe apuntar a la raíz del repositorio, donde están `package.json`, `api/` y `vercel.json`.
@@ -29,7 +29,8 @@ Proyecto previsto: `racitores-projects/caldera-gestion`. El repositorio también
 
 | Variable | Uso |
 | --- | --- |
-| `DATABASE_URL` | Conexión PostgreSQL, con TLS según la URL suministrada por Neon |
+| `DATABASE_URL` | Conexión PostgreSQL agrupada, con TLS según la URL suministrada por Neon |
+| `DATABASE_URL_UNPOOLED` | Conexión directa utilizada por las migraciones; si falta se utiliza `DATABASE_URL` |
 | `BETTER_AUTH_URL` | URL HTTPS del despliegue, p. ej. `https://caldera-gestion.vercel.app` |
 | `BETTER_AUTH_SECRET` | Secreto aleatorio de al menos 32 caracteres; generar fuera del código y conservar estable |
 | `RESEND_API_KEY` | Credencial de Resend para recuperación de contraseñas |
@@ -76,6 +77,12 @@ No usar `TEST_DATABASE_URL` sobre una BBDD con datos útiles: las pruebas crean 
 
 ## Pendiente de activación externa
 
-Conectar Neon y las variables de sesión en Vercel; configurar correo; registrar número, token y plantillas de WhatsApp; probar con un teléfono autorizado del piloto. Estas tareas requieren recursos o credenciales del propietario y no se sustituyen por valores ficticios. Validar aislamiento, acceso y copia de seguridad con la BBDD de producción antes de incorporar datos reales.
+Configurar correo; registrar número, token y plantillas de WhatsApp; probar con un teléfono autorizado del piloto. Estas tareas requieren recursos o credenciales del propietario y no se sustituyen por valores ficticios. Validar aislamiento, acceso y copia de seguridad con la BBDD de producción antes de incorporar datos reales.
 
 El esquema de Better Auth está generado desde la dependencia fijada en `package-lock.json` y se guarda en `server/auth-schema.sql`. Se aplica dentro de la misma transacción y bloqueo de migración que el esquema de negocio, con registro de versión. Al actualizar Better Auth, revisar el SQL y preparar una migración incremental; no basta con actualizar la dependencia o sobrescribir el esquema inicial. El generador `node scripts/generate-auth-schema.mjs` siempre utiliza una BBDD temporal vacía.
+
+## Conexión activada en Neon
+
+El recurso pertenece a la cuenta de Neon del propietario (organización Ramón, plan Free); Vercel utiliza sus conexiones mediante variables sensibles, no mediante una integración de facturación de Marketplace. Proyecto `bitter-lab-90677782`, BBDD `visitafacil`, rama `production` (`br-crimson-rice-bg9lamnq`). Se mantiene una rama `staging` (`br-late-voice-bg9qg9mr`) para validar el esquema antes de producción. Las credenciales de producción solo están asignadas a Production en `caldera-gestion`.
+
+La aplicación y PostgreSQL se ejecutan en Frankfurt (`fra1` / `aws-eu-central-1`). El cómputo de Neon está limitado a 0,25 CU con suspensión por inactividad según el plan. Las migraciones de build y CLI prefieren `DATABASE_URL_UNPOOLED`; el tráfico de la aplicación conserva el pool de `DATABASE_URL`.
