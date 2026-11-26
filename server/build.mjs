@@ -4,7 +4,7 @@ const configured =
   process.env.BETTER_AUTH_URL &&
   process.env.BETTER_AUTH_SECRET;
 if (configured) {
-  const pool = database();
+  const pool = database(process.env.DATABASE_URL_UNPOOLED ?? process.env.DATABASE_URL);
   try {
     await migrate(pool);
     console.log("Esquema PostgreSQL preparado.");
