@@ -18,5 +18,6 @@
       "path": "/api/cron/messages",
       "schedule": "0 7 * * *"
     }
-  ]
+  ],
+  "installCommand": "npm ci"
 }
