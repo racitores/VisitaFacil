@@ -1,85 +1,175 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Listado mensual de revisiones de calderas pendientes.">
-  <title>Revisiones pendientes · Caldera Gestión</title>
-  <link rel="stylesheet" href="styles.css">
-  <script type="module" src="revisiones.mjs"></script>
-</head>
-<body>
-  <header class="masthead">
-    <div class="wrap masthead-inner">
-      <div class="brand"><span class="brand-mark" aria-hidden="true"><svg width="21" height="24" viewBox="0 0 24 28" fill="none"><path d="M13 2c1 6-4 7-4 11-2-1-3-3-3-3-3 3-4 6-4 9a10 8 0 0 0 20 0c0-7-5-9-9-17Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 24c-3 0-4-4 0-8 4 4 3 8 0 8Z" fill="currentColor"/></svg></span><div>Caldera Gestión<small>Servicio técnico</small></div></div>
-      <nav class="site-nav" aria-label="Navegación principal">
-        <a href="./">Clientes</a>
-        <a href="revisiones.html" aria-current="page">Revisiones pendientes</a>
-      </nav>
-      <span class="demo">Datos de prueba</span>
-    </div>
-  </header>
-  <main class="wrap">
-    <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow">MANTENIMIENTO</p>
-      <h1 id="page-title">Revisiones pendientes</h1>
-      <p>Consulta a qué clientes les toca la revisión anual en el mes seleccionado.</p>
-    </section>
-    <section class="panel review-panel" aria-labelledby="period-title">
-      <div class="period">
-        <div>
-          <h2 id="period-title">Mes de vencimiento</h2>
-          <p id="review-status" class="status" role="status">Cargando clientes…</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Listado mensual de revisiones de calderas pendientes."
+    />
+    <title>Revisiones pendientes · Caldera Gestión</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="revisiones.mjs"></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap masthead-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"
+            ><svg width="21" height="24" viewBox="0 0 24 28" fill="none">
+              <path
+                d="M13 2c1 6-4 7-4 11-2-1-3-3-3-3-3 3-4 6-4 9a10 8 0 0 0 20 0c0-7-5-9-9-17Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 24c-3 0-4-4 0-8 4 4 3 8 0 8Z"
+                fill="currentColor"
+              /></svg
+          ></span>
+          <div>Caldera Gestión<small>Servicio técnico</small></div>
         </div>
-        <form id="review-filter" class="review-filter">
-          <label>Mes <select id="review-month" disabled></select></label>
-          <label>Año <select id="review-year" disabled></select></label>
-        </form>
-        <a class="route-jump" href="#planificador">Planificar ruta ↓</a>
+        <nav class="site-nav" aria-label="Navegación principal">
+          <a href="plataforma.html">VisitaFácil · Mi empresa</a>
+          <a href="demo.html">Clientes</a>
+          <a href="revisiones.html" aria-current="page"
+            >Revisiones pendientes</a
+          >
+        </nav>
+        <span class="demo">Datos de prueba</span>
       </div>
-      <section class="zone-panel" aria-labelledby="zone-title">
+    </header>
+    <main class="wrap">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">MANTENIMIENTO</p>
+        <h1 id="page-title">Revisiones pendientes</h1>
+        <p>
+          Consulta a qué clientes les toca la revisión anual en el mes
+          seleccionado.
+        </p>
+      </section>
+      <section class="panel review-panel" aria-labelledby="period-title">
         <div class="period">
           <div>
-            <h2 id="zone-title">Agrupar visitas por zona</h2>
-            <p class="route-note">Reparte las visitas marcadas en jornadas de tamaño parecido y por cercanía.</p>
+            <h2 id="period-title">Mes de vencimiento</h2>
+            <p id="review-status" class="status" role="status">
+              Cargando clientes…
+            </p>
           </div>
-          <label class="review-filter zone-limit">Máximo de visitas por día <select id="zone-limit" disabled></select></label>
+          <form id="review-filter" class="review-filter">
+            <label
+              >Mes
+              <select id="review-month" disabled></select
+            ></label>
+            <label
+              >Año
+              <select id="review-year" disabled></select
+            ></label>
+          </form>
+          <a class="route-jump" href="#planificador">Planificar ruta ↓</a>
         </div>
-        <p id="zone-status" class="status" role="status"></p>
-        <p id="zone-missing" class="route-note"></p>
-        <ol id="zone-list" class="zone-list" aria-label="Jornadas propuestas"></ol>
+        <section class="zone-panel" aria-labelledby="zone-title">
+          <div class="period">
+            <div>
+              <h2 id="zone-title">Agrupar visitas por zona</h2>
+              <p class="route-note">
+                Reparte las visitas marcadas en jornadas de tamaño parecido y
+                por cercanía.
+              </p>
+            </div>
+            <label class="review-filter zone-limit"
+              >Máximo de visitas por día
+              <select id="zone-limit" disabled></select
+            ></label>
+          </div>
+          <p id="zone-status" class="status" role="status"></p>
+          <p id="zone-missing" class="route-note"></p>
+          <ol
+            id="zone-list"
+            class="zone-list"
+            aria-label="Jornadas propuestas"
+          ></ol>
+        </section>
+        <details id="review-details">
+          <summary>Ver y seleccionar clientes del mes</summary>
+          <ul
+            id="review-list"
+            class="review-list"
+            aria-label="Clientes pendientes de revisión"
+          ></ul>
+        </details>
       </section>
-      <details id="review-details">
-        <summary>Ver y seleccionar clientes del mes</summary>
-        <ul id="review-list" class="review-list" aria-label="Clientes pendientes de revisión"></ul>
-      </details>
-    </section>
-    <section id="planificador" class="panel route-panel" aria-labelledby="route-title">
-      <h2 id="route-title" tabindex="-1">Planificar ruta</h2>
-      <p class="route-note">Carga una jornada o elige las visitas en el listado y fija dónde quieres empezar y terminar.</p>
-      <p class="route-note" id="route-scope">Selección del mes</p>
-      <button id="route-reset" class="zone-button" type="button" hidden>Volver a la selección del mes</button>
-      <form id="route-form">
-        <div class="route-fields">
-          <div>
-            <label>Origen <input id="route-origin" placeholder="Dirección o latitud, longitud" required maxlength="200"></label>
-            <button id="route-gps" class="zone-button" type="button">Usar mi ubicación</button>
-            <p id="route-gps-status" class="status" role="status"></p>
+      <section
+        id="planificador"
+        class="panel route-panel"
+        aria-labelledby="route-title"
+      >
+        <h2 id="route-title" tabindex="-1">Planificar ruta</h2>
+        <p class="route-note">
+          Carga una jornada o elige las visitas en el listado y fija dónde
+          quieres empezar y terminar.
+        </p>
+        <p class="route-note" id="route-scope">Selección del mes</p>
+        <button id="route-reset" class="zone-button" type="button" hidden>
+          Volver a la selección del mes
+        </button>
+        <form id="route-form">
+          <div class="route-fields">
+            <div>
+              <label
+                >Origen
+                <input
+                  id="route-origin"
+                  placeholder="Dirección o latitud, longitud"
+                  required
+                  maxlength="200"
+              /></label>
+              <button id="route-gps" class="zone-button" type="button">
+                Usar mi ubicación
+              </button>
+              <p id="route-gps-status" class="status" role="status"></p>
+            </div>
+            <label
+              >Destino
+              <input
+                id="route-destination"
+                placeholder="Mismo punto que el origen"
+                maxlength="200"
+            /></label>
           </div>
-          <label>Destino <input id="route-destination" placeholder="Mismo punto que el origen" maxlength="200"></label>
-        </div>
-        <label class="route-remember"><input id="route-remember" type="checkbox" checked> Recordar el último origen y destino en este navegador</label>
-        <p class="route-note">Al calcular, las direcciones se consultan en Photon y las coordenadas se envían a OSRM. Las paradas con dirección de referencia muestran la calle y el número. Las demás indican que el punto es aproximado.</p>
-        <div class="route-actions">
-          <button id="route-submit" type="submit" disabled>Calcular ruta</button>
-          <span id="route-count"></span>
-        </div>
-      </form>
-      <p id="route-status" class="status" role="status"></p>
-      <div id="route-result"></div>
-      <p class="route-credit">Rutas por <a href="https://routing.openstreetmap.de/about.html">OSRM / FOSSGIS</a> · Datos © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · <a href="https://www.openstreetmap.org/fixthemap">Corrige el mapa</a></p>
-    </section>
-  </main>
-  <footer class="wrap">Caldera Gestión <span>·</span> Registro de servicio técnico</footer>
-</body>
+          <label class="route-remember"
+            ><input id="route-remember" type="checkbox" checked /> Recordar el
+            último origen y destino en este navegador</label
+          >
+          <p class="route-note">
+            Al calcular, las direcciones se consultan en Photon y las
+            coordenadas se envían a OSRM. Las paradas con dirección de
+            referencia muestran la calle y el número. Las demás indican que el
+            punto es aproximado.
+          </p>
+          <div class="route-actions">
+            <button id="route-submit" type="submit" disabled>
+              Calcular ruta
+            </button>
+            <span id="route-count"></span>
+          </div>
+        </form>
+        <p id="route-status" class="status" role="status"></p>
+        <div id="route-result"></div>
+        <p class="route-credit">
+          Rutas por
+          <a href="https://routing.openstreetmap.de/about.html"
+            >OSRM / FOSSGIS</a
+          >
+          · Datos ©
+          <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ·
+          <a href="https://www.openstreetmap.org/fixthemap">Corrige el mapa</a>
+        </p>
+      </section>
+    </main>
+    <footer class="wrap">
+      Caldera Gestión <span>·</span> Registro de servicio técnico
+    </footer>
+  </body>
 </html>

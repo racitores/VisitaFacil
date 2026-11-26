@@ -1,0 +1,189 @@
+[hidden] {
+  display: none !important;
+}
+main {
+  padding-bottom: 4rem;
+}
+#notice {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin: 1rem 0;
+  padding: 0.8rem;
+  border-radius: 0.6rem;
+  background: #e7f2ec;
+  white-space: pre-wrap;
+}
+#notice:empty {
+  display: none;
+}
+#notice.error {
+  background: #fff0e9;
+  color: #8b2811;
+}
+#access,
+#companies,
+#reset {
+  max-width: 650px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+form {
+  display: grid;
+  gap: 1rem;
+}
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.65rem;
+  border: 1px solid #b9cbc0;
+  border-radius: 0.4rem;
+  max-width: 100%;
+  background: white;
+  color: #183c2a;
+}
+textarea {
+  min-height: 100px;
+}
+button {
+  font: inherit;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.45rem;
+  border: 1px solid #a7beb0;
+  background: #f4faf6;
+  color: #17452e;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.actions,
+.toolbar,
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.toolbar {
+  margin: 1.5rem 0;
+}
+.tabs {
+  border-bottom: 1px solid #c9d8ce;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.tabs button[aria-current="true"] {
+  background: #184b33;
+  color: white;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.card {
+  padding: 1.2rem;
+  border: 1px solid #d2ded6;
+  border-radius: 0.8rem;
+  background: white;
+}
+.card h3 {
+  margin-top: 0;
+}
+.card p {
+  overflow-wrap: anywhere;
+}
+.card .actions {
+  margin-top: 0.8rem;
+}
+.muted {
+  color: #65796c;
+  font-size: 0.88rem;
+}
+.badge {
+  display: inline-block;
+  border-radius: 1rem;
+  padding: 0.2rem 0.6rem;
+  background: #e7f2ec;
+  font-size: 0.8rem;
+}
+dialog {
+  border: 1px solid #b9cbc0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: min(92vw, 650px);
+  max-height: 90vh;
+}
+dialog::backdrop {
+  background: #152c2180;
+}
+#editor-fields {
+  display: grid;
+  gap: 0.8rem;
+}
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+#content > .panel {
+  padding: 1.4rem;
+  margin: 1rem 0;
+}
+.brand {
+  text-decoration: none;
+}
+.brand small {
+  display: block;
+}
+.review-log {
+  font-size: 0.9rem;
+  border-left: 2px solid #9ebdac;
+  padding-left: 0.8rem;
+}
+.empty {
+  padding: 2rem;
+  background: #f4f8f5;
+  border-radius: 0.6rem;
+}
+.danger {
+  color: #9c3628;
+}
+
+.masthead .brand {
+  display: block;
+  color: inherit;
+}
+.masthead .brand small {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.tabs {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.demo-links {
+  font-size: 0.8rem;
+}
+.demo-links a {
+  display: block;
+  padding: 0.4rem;
+}

@@ -10,7 +10,8 @@
     "dev": "node server/dev.mjs",
     "test": "node --test test/*.test.mjs",
     "db:migrate": "node server/migrate.mjs",
-    "check": "node --check server/app.mjs",
+    "check": "node --check server/app.mjs && node --check dist/plataforma.mjs",
+    "test:e2e": "node test/browser.mjs",
     "build": "node server/build.mjs"
   },
   "dependencies": {
