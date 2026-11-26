@@ -33,3 +33,8 @@ El planificador consulta a Photon para las direcciones y a OSRM/FOSSGIS para las
 En Revisiones pendientes, ajusta el máximo de visitas por día (entre 1 y 14). La app agrupa las visitas marcadas con coordenadas en el menor número de jornadas posible, equilibra su tamaño y las separa por cercanía geográfica. Cada jornada se puede cargar en el planificador existente, que sigue calculando por carretera con el origen y destino configurados. Los grupos son propuestas, sin fechas asignadas.
 
 Noviembre de 2026 tiene 50 visitas ficticias en 30 localidades de la Comunidad de Madrid, con 21 visitas en Madrid capital. Las direcciones de los 27 clientes ficticios de Madrid capital son referencias de bibliotecas públicas, tomadas del conjunto [Bibliotecas de Madrid](https://datos.madrid.es/dataset/201747-0-bibliobuses-bibliotecas) del Ayuntamiento de Madrid ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)). Se han adaptado el formato de las direcciones y la precisión de las coordenadas. El itinerario muestra calle, número y código postal para esos puntos. Los nombres y las revisiones de los clientes son ficticios. Para una dirección real se puede añadir `direccion.coordenadas` como `[longitud, latitud]`. Los clientes sin coordenadas se muestran aparte y se pueden incluir en el planificador manual.
+
+## Documentación de integraciones
+
+- [Citas y recordatorios por WhatsApp](docs/whatsapp-citas.md).
+- [ContactKeeper y futura importación de clientes](docs/contactkeeper-importacion.md).
