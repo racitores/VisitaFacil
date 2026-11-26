@@ -25,12 +25,24 @@
       </div>
     </header>
     <main class="wrap">
+      <section id="demo-banner" class="demo-banner" hidden>
+        <strong>DEMO · Datos ficticios</strong>
+        <p>
+          Los cambios se guardan solo en este navegador. No se consulta ni
+          modifica EPA. Usa datos de prueba; las rutas consultan servicios
+          externos al calcularlas.
+        </p>
+        <button id="demo-reset" type="button">Restablecer demo</button>
+      </section>
       <div id="notice" role="status" aria-live="polite"></div>
       <section id="access" class="panel">
         <h1>Tu equipo, en ruta</h1>
         <p>
           Organiza las revisiones, confirma las citas y recupera los huecos en
           la agenda.
+        </p>
+        <p>
+          <a class="demo-entry" href="./?demo=1">Probar sin iniciar sesión</a>
         </p>
         <form id="auth-form">
           <label

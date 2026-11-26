@@ -11,7 +11,7 @@
     "test": "node --test test/*.test.mjs",
     "db:migrate": "node server/migrate.mjs",
     "check": "node --check server/app.mjs && node --check dist/plataforma.mjs",
-    "test:e2e": "node test/browser.mjs",
+    "test:e2e": "node test/browser.mjs && node test/demo-browser.mjs",
     "build": "node server/build.mjs"
   },
   "dependencies": {

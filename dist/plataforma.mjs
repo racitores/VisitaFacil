@@ -1,4 +1,6 @@
 import { actualizarParadas, localizarDireccion } from "./ruta.mjs";
+const demoMode = new URLSearchParams(location.search).get("demo") === "1";
+let demoStore;
 const $ = (s) => document.querySelector(s);
 const escape = (x) =>
   String(x ?? "").replace(
@@ -35,6 +37,10 @@ function notice(text, error = false) {
   $("#notice").classList.toggle("error", error);
 }
 async function api(path, { method = "GET", body } = {}) {
+  if (demoMode) {
+    if (!demoStore) throw new Error("La demo todavía no está preparada.");
+    return demoStore.request(path, { method, body });
+  }
   const response = await fetch(`/api${path}`, {
     method,
     credentials: "same-origin",
@@ -105,8 +111,9 @@ function render() {
     .forEach((b) => {
       b.setAttribute("aria-current", String(b.dataset.tab === tab));
       b.hidden =
-        !admin() &&
-        ["pool", "team", "messages", "clients"].includes(b.dataset.tab);
+        (demoMode && ["team", "messages"].includes(b.dataset.tab)) ||
+        (!admin() &&
+          ["pool", "team", "messages", "clients"].includes(b.dataset.tab));
     });
   if (!admin() && tab !== "agenda") tab = "agenda";
   $("#route-container").hidden = true;
@@ -553,6 +560,10 @@ $("#reset-form").addEventListener("submit", (e) => {
 });
 $("#logout").addEventListener("click", () =>
   guard(async () => {
+    if (demoMode) {
+      location.assign(location.pathname);
+      return;
+    }
     await api("/auth/sign-out", { method: "POST", body: {} });
     state = null;
     companyId = "";
@@ -700,6 +711,39 @@ $("#editor").addEventListener("click", (e) => {
   }
 });
 await guard(async () => {
+  if (demoMode) {
+    $("#demo-banner").hidden = false;
+    $("#switch-company").hidden = true;
+    $("#company-select").disabled = true;
+    $("#logout").textContent = "Salir de demo";
+    const { createDemoStore } = await import("./demo-store.mjs");
+    const response = await fetch("./clientes.json");
+    if (!response.ok)
+      throw new Error("No se pudieron cargar los clientes ficticios.");
+    const seed = (await response.json()).clientes;
+    const initialize = () => {
+      demoStore = createDemoStore({ storage: localStorage, seed });
+    };
+    $("#demo-reset").addEventListener("click", () =>
+      modal(
+        "Restablecer demo",
+        "<p>Se quitarán los cambios de esta demo guardados en este navegador y se cargarán de nuevo los clientes ficticios.</p>",
+        async () => {
+          if (demoStore) demoStore.reset();
+          else {
+            localStorage.removeItem("visitafacil-demo-v1");
+            initialize();
+          }
+          agendaDay = "";
+          tab = "agenda";
+          await loadCompanies();
+        },
+      ),
+    );
+    initialize();
+    await loadCompanies();
+    return;
+  }
   const health = await api("/health");
   if (!health.configured) {
     show("access");
