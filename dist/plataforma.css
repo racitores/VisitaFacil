@@ -187,3 +187,23 @@ dialog::backdrop {
   display: block;
   padding: 0.4rem;
 }
+
+.demo-banner {
+  margin: 1.2rem 0;
+  padding: 1rem;
+  border: 1px solid #d2a843;
+  border-radius: 0.7rem;
+  background: #fff7df;
+}
+.demo-banner p {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+.demo-entry {
+  display: inline-block;
+  background: #184b33;
+  color: white;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}

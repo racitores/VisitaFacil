@@ -86,3 +86,11 @@ El esquema de Better Auth está generado desde la dependencia fijada en `package
 El recurso pertenece a la cuenta de Neon del propietario (organización Ramón, plan Free); Vercel utiliza sus conexiones mediante variables sensibles, no mediante una integración de facturación de Marketplace. Proyecto `bitter-lab-90677782`, BBDD `visitafacil`, rama `production` (`br-crimson-rice-bg9lamnq`). Se mantiene una rama `staging` (`br-late-voice-bg9qg9mr`) para validar el esquema antes de producción. Las credenciales de producción solo están asignadas a Production en `caldera-gestion`.
 
 La aplicación y PostgreSQL se ejecutan en Frankfurt (`fra1` / `aws-eu-central-1`). El cómputo de Neon está limitado a 0,25 CU con suspensión por inactividad según el plan. Las migraciones de build y CLI prefieren `DATABASE_URL_UNPOOLED`; el tráfico de la aplicación conserva el pool de `DATABASE_URL`.
+
+## Demo sin cuenta
+
+Abrir `/?demo=1` o pulsar «Probar sin iniciar sesión» en la portada. Se copian los 89 clientes ficticios del JSON a una empresa local independiente y se preparan sus revisiones pendientes hasta final de año. Clientes, agenda, bolsa, sugerencias e intervenciones se guardan en `localStorage`, clave `visitafacil-demo-v1`, solo en ese navegador y origen. No se accede a `/api`, Neon, EPA ni a ninguna sesión real; no se envían mensajes ni invitaciones.
+
+«Restablecer demo» pide confirmación antes de regenerar únicamente los datos de esa demo. «Salir de demo» vuelve al acceso normal y conserva los cambios locales. La demo no sustituye una copia de seguridad: borrar datos del navegador o cambiar de dispositivo pierde ese estado. Las consultas explícitas de direcciones/rutas mantienen Photon y OSRM; usar datos ficticios en esta modalidad. Las reglas de planificación de servidor y demo comparten módulos puros para evitar divergencias.
+
+La planificación semanal con X semanas de antelación se describe en [planificacion-semanal.md](planificacion-semanal.md); aún requiere implementar el proceso periódico y el límite estricto de semana.

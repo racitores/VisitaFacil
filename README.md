@@ -54,3 +54,9 @@ Noviembre de 2026 tiene 50 visitas ficticias en 30 localidades de la Comunidad d
 
 - [Citas y recordatorios por WhatsApp](docs/whatsapp-citas.md).
 - [ContactKeeper y futura importación de clientes](docs/contactkeeper-importacion.md).
+
+## Probar sin contraseña
+
+Abrir [la demo local](https://caldera-gestion.vercel.app/?demo=1) o pulsar «Probar sin iniciar sesión». Incluye los clientes ficticios, agenda, bolsa, sugerencias y rutas. Los cambios se conservan solo en el navegador y no modifican EPA ni la BBDD. Se puede restablecer la demo desde su aviso superior.
+
+Diseño pendiente de [planificación semanal con X semanas de antelación](docs/planificacion-semanal.md).
