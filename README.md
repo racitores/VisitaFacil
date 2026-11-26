@@ -1,4 +1,20 @@
-# Caldera Gestión
+# VisitaFácil
+
+Plataforma para organizar revisiones y visitas de mantenimiento de pequeñas empresas.
+
+La gestión con cuentas, empresas, agenda y bolsa está en la página principal (`/` o `/plataforma.html`). Requiere conectar PostgreSQL y las variables de acceso en Vercel. Consulta la [guía de activación y alcance del MVP](docs/mvp-plataforma.md). El directorio y el planificador originales siguen disponibles como demostración con clientes ficticios.
+
+## Comenzar
+
+```bash
+npm ci
+npm run db:migrate
+npm run dev
+```
+
+Configura antes las variables del entorno indicadas en la guía. Abre `http://localhost:3000/plataforma.html`. Para comprobar la implementación: `npm run check`, `npm test` y `npm run test:e2e` (requiere Chromium). GitHub Actions ejecuta las pruebas con PostgreSQL 16.
+
+## Demostración de Caldera Gestión
 
 Primera versión de un directorio de clientes para un servicio técnico de calderas. Permite buscar por nombre, teléfono o dirección y consultar fichas e historiales.
 
@@ -10,7 +26,7 @@ Desde la raíz del proyecto:
 python3 -m http.server 8000 --directory dist
 ```
 
-Abre http://localhost:8000. El navegador carga el JSON por HTTP.
+Abre http://localhost:8000/demo.html. El navegador carga el JSON por HTTP.
 
 ## Datos
 

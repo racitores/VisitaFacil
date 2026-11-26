@@ -93,7 +93,7 @@ async function searchAddress(query, signal) {
   return requestJson(url, signal, 'No se pudo consultar el servicio de direcciones. Puedes introducir coordenadas.');
 }
 
-async function locate(address, signal, allowApproximation = false) {
+export async function localizarDireccion(address, signal = AbortSignal.timeout(15000), allowApproximation = false) {
   signal.throwIfAborted();
   const entered = address.trim();
   const coord = entered.match(/^(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/);
@@ -257,8 +257,8 @@ form.addEventListener('submit', async event => {
   status.textContent = 'Localizando las paradas y calculando la ruta…';
 
   try {
-    const first = await locate(start, signal, true);
-    const last = finish === start ? first : await locate(finish, signal, true);
+    const first = await localizarDireccion(start, signal, true);
+    const last = finish === start ? first : await localizarDireccion(finish, signal, true);
     const points = [{ ...first, name: 'Origen' }];
     for (const client of stops) {
       const address = clientAddress(client.direccion);
@@ -267,7 +267,7 @@ form.addEventListener('submit', async event => {
       const label = place.coordenadas
         ? place.via + ', ' + place.codigoPostal + ' ' + place.localidad
         : 'Punto aproximado en ' + place.localidad;
-      const location = point ? { point, label } : await locate(address, signal);
+      const location = point ? { point, label } : await localizarDireccion(address, signal);
       points.push({ ...location, name: client.nombre });
     }
     points.push({ ...last, name: 'Destino' });

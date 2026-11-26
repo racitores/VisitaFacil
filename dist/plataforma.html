@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>VisitaFácil · Tu agenda de mantenimiento</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="plataforma.css" />
+    <script type="module" src="plataforma.mjs"></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap masthead-inner">
+        <a class="brand" href="plataforma.html"
+          >VisitaFácil<small>Clientes, visitas y rutas</small></a
+        >
+        <nav class="site-nav">
+          <details class="demo-links">
+            <summary>Ver demostración</summary>
+            <a href="demo.html">Directorio de demostración</a
+            ><a href="revisiones.html">Planificador de demostración</a>
+          </details>
+        </nav>
+        <button id="logout" hidden>Cerrar sesión</button>
+      </div>
+    </header>
+    <main class="wrap">
+      <div id="notice" role="status" aria-live="polite"></div>
+      <section id="access" class="panel">
+        <h1>Tu equipo, en ruta</h1>
+        <p>
+          Organiza las revisiones, confirma las citas y recupera los huecos en
+          la agenda.
+        </p>
+        <form id="auth-form">
+          <label
+            >Nombre
+            <input name="name" autocomplete="name" maxlength="120" /></label
+          ><label
+            >Correo
+            <input
+              name="email"
+              type="email"
+              required
+              autocomplete="username" /></label
+          ><label
+            >Contraseña
+            <input
+              name="password"
+              type="password"
+              minlength="12"
+              autocomplete="current-password"
+          /></label>
+          <div class="actions">
+            <button name="action" value="login">Entrar</button
+            ><button name="action" value="signup">Crear cuenta</button
+            ><button name="action" value="forgot">Recuperar contraseña</button>
+          </div>
+          <p>Mínimo 12 caracteres para crear tu contraseña.</p>
+        </form>
+      </section>
+      <section id="reset" class="panel" hidden>
+        <h1>Elige una contraseña nueva</h1>
+        <form id="reset-form">
+          <label
+            >Nueva contraseña
+            <input
+              name="password"
+              type="password"
+              required
+              minlength="12"
+              autocomplete="new-password" /></label
+          ><button>Guardar contraseña</button>
+        </form>
+      </section>
+      <section id="companies" class="panel" hidden>
+        <h1>Tu empresa</h1>
+        <div id="company-list"></div>
+        <form id="company-form">
+          <label
+            >Crear empresa <input name="name" required maxlength="120" /></label
+          ><button>Crear</button>
+        </form>
+        <form id="accept-form">
+          <label
+            >Código de invitación
+            <input name="token" required autocomplete="off" /></label
+          ><button>Unirme al equipo</button>
+        </form>
+      </section>
+      <section id="workspace" hidden>
+        <div class="toolbar">
+          <label
+            >Empresa
+            <select id="company-select"></select></label
+          ><button id="refresh">Actualizar</button
+          ><button id="switch-company">
+            Crear empresa o aceptar invitación
+          </button>
+        </div>
+        <nav id="tabs" class="tabs" aria-label="Gestión">
+          <button data-tab="clients">Clientes</button
+          ><button data-tab="agenda">Agenda</button
+          ><button data-tab="pool">Bolsa</button
+          ><button data-tab="team">Equipo</button
+          ><button data-tab="messages">Mensajes</button>
+        </nav>
+        <section id="content"></section>
+      </section>
+      <dialog id="editor">
+        <form id="editor-form">
+          <h2 id="editor-title"></h2>
+          <div id="editor-fields"></div>
+          <div class="actions">
+            <button type="submit">Guardar</button
+            ><button id="editor-cancel" type="button">Cancelar</button>
+          </div>
+        </form>
+      </dialog>
+      <section id="route-container" hidden>
+        <section
+          id="planificador"
+          class="panel route-panel"
+          aria-labelledby="route-title"
+        >
+          <h2 id="route-title" tabindex="-1">Planificar ruta</h2>
+          <p class="route-note">
+            Carga una jornada o elige las visitas en el listado y fija dónde
+            quieres empezar y terminar.
+          </p>
+          <p class="route-note" id="route-scope">Selección del mes</p>
+          <button id="route-reset" class="zone-button" type="button" hidden>
+            Volver a la selección del mes
+          </button>
+          <form id="route-form">
+            <div class="route-fields">
+              <div>
+                <label
+                  >Origen
+                  <input
+                    id="route-origin"
+                    placeholder="Dirección o latitud, longitud"
+                    required
+                    maxlength="200"
+                /></label>
+                <button id="route-gps" class="zone-button" type="button">
+                  Usar mi ubicación
+                </button>
+                <p id="route-gps-status" class="status" role="status"></p>
+              </div>
+              <label
+                >Destino
+                <input
+                  id="route-destination"
+                  placeholder="Mismo punto que el origen"
+                  maxlength="200"
+              /></label>
+            </div>
+            <label class="route-remember"
+              ><input id="route-remember" type="checkbox" checked /> Recordar el
+              último origen y destino en este navegador</label
+            >
+            <p class="route-note">
+              Al calcular, las direcciones se consultan en Photon y las
+              coordenadas se envían a OSRM. Las paradas con dirección de
+              referencia muestran la calle y el número. Las demás indican que el
+              punto es aproximado.
+            </p>
+            <div class="route-actions">
+              <button id="route-submit" type="submit" disabled>
+                Calcular ruta
+              </button>
+              <span id="route-count"></span>
+            </div>
+          </form>
+          <p id="route-status" class="status" role="status"></p>
+          <div id="route-result"></div>
+          <p class="route-credit">
+            Rutas por
+            <a href="https://routing.openstreetmap.de/about.html"
+              >OSRM / FOSSGIS</a
+            >
+            · Datos ©
+            <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+            ·
+            <a href="https://www.openstreetmap.org/fixthemap"
+              >Corrige el mapa</a
+            >
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
