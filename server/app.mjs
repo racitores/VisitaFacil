@@ -635,6 +635,22 @@ export function createApp({
     });
     res.json({ queued: true, ...delivery });
   });
+  app.post("/api/messages/process", async (req, res) => {
+    admin(req);
+    assert(
+      process.env.WHATSAPP_TOKEN &&
+        process.env.WHATSAPP_PHONE_ID &&
+        process.env.WHATSAPP_GRAPH_VERSION,
+      "WhatsApp no está configurado.",
+      503,
+    );
+    res.json(
+      await processOutbox(pool, transport ?? sendWhatsApp, {
+        companyId: req.company,
+        reminders: false,
+      }),
+    );
+  });
   app.post("/api/messages/:id/reconcile", async (req, res) => {
     admin(req);
     const b = req.body;
@@ -734,12 +750,10 @@ export function createApp({
       err.status ??
       (err.code === "23505" ? 409 : err.code === "23503" ? 400 : 500);
     if (status >= 500) console.error("API error", err.code ?? err.name);
-    res
-      .status(status)
-      .json({
-        error:
-          status === 500 ? "No se pudo completar la operación." : err.message,
-      });
+    res.status(status).json({
+      error:
+        status === 500 ? "No se pudo completar la operación." : err.message,
+    });
   });
   return app;
 }

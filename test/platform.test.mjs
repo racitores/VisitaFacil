@@ -2,6 +2,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { setupDatabase } from "./helpers.mjs";
 import { createHmac, randomUUID } from "node:crypto";
+import { migrate } from "../server/db.mjs";
 import { processOutbox } from "../server/messaging.mjs";
 import { createApp } from "../server/app.mjs";
 process.env.BETTER_AUTH_URL = "http://localhost:31927";
@@ -582,4 +583,11 @@ test("dynamic grouping persists and preserves capacity and incomplete visits", a
   assert(t.plans.length >= 1);
   assert(t.plans.every((p) => p.technician_id === techId));
   assert(t.clients.every((c) => t.visits.some((v) => v.client_id === c.id)));
+});
+
+test("repeated migrations preserve customer and auth data", async () => {
+  const before = (await request("/state")).body;
+  await migrate(database.pool);
+  const after = (await request("/state")).body;
+  assert.deepEqual(after, before);
 });

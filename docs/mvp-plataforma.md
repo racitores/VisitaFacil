@@ -16,10 +16,13 @@ Sugerencia: devuelve una sola jornada compatible entre las existentes, la que te
 
 ## Activación en Vercel
 
+Preparado el 26/11/2026: `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET` y `CRON_SECRET` ya están guardadas para **Production** en `caldera-gestion`. Los secretos están marcados como sensibles. Falta conectar Neon; correo y WhatsApp requieren sus credenciales y configuración externa. No se han copiado secretos de producción a previews.
+
+
 Proyecto previsto: `racitores-projects/caldera-gestion`. El repositorio también tiene conectado `caldera-gestion-dist`: conviene conservar un único despliegue de producción para evitar confusiones. No cambiar el Root Directory del proyecto: debe apuntar a la raíz del repositorio, donde están `package.json`, `api/` y `vercel.json`.
 
 1. En Vercel → proyecto → Storage/Marketplace, crear o conectar **Neon PostgreSQL**. Elegir el plan y la región en la cuenta del propietario. Vincular su conexión PostgreSQL agrupada a `DATABASE_URL`. Esta activación requiere la cuenta de Vercel; el conector disponible no permite crear recursos de Marketplace.
-2. Añadir las variables de acceso indicadas abajo a los entornos necesarios. Usar una base o rama Neon independiente para previews. Nunca vincular una preview de código no revisado a la BBDD de producción: el build ejecuta migraciones aditivas de aplicación y las migraciones de Better Auth.
+2. Añadir las variables de acceso indicadas abajo a los entornos necesarios. Usar una base o rama Neon independiente para previews. Nunca vincular una preview de código no revisado a la BBDD de producción: el build ejecuta migraciones aditivas de aplicación y el esquema versionado de Better Auth.
 3. Redeploy. `npm run build` prepara el esquema si están presentes las variables de BBDD y acceso. Si faltan, la demostración sigue disponible y la API de gestión devuelve servicio sin configurar. Un error real de migración hace fallar el build.
 4. Abrir `/plataforma.html`, crear una cuenta y una empresa. Importar el JSON desde el formulario si se quieren datos ficticios; no se importan automáticamente a la BBDD.
 5. En cada preview, `BETTER_AUTH_URL` debe corresponder al dominio estable que se usa para acceder a esa preview. El dominio tiene que coincidir también en los formularios y los correos; el servidor rechaza mutaciones desde otros orígenes.
@@ -74,3 +77,5 @@ No usar `TEST_DATABASE_URL` sobre una BBDD con datos útiles: las pruebas crean 
 ## Pendiente de activación externa
 
 Conectar Neon y las variables de sesión en Vercel; configurar correo; registrar número, token y plantillas de WhatsApp; probar con un teléfono autorizado del piloto. Estas tareas requieren recursos o credenciales del propietario y no se sustituyen por valores ficticios. Validar aislamiento, acceso y copia de seguridad con la BBDD de producción antes de incorporar datos reales.
+
+El esquema de Better Auth está generado desde la dependencia fijada en `package-lock.json` y se guarda en `server/auth-schema.sql`. Se aplica dentro de la misma transacción y bloqueo de migración que el esquema de negocio, con registro de versión. Al actualizar Better Auth, revisar el SQL y preparar una migración incremental; no basta con actualizar la dependencia o sobrescribir el esquema inicial. El generador `node scripts/generate-auth-schema.mjs` siempre utiliza una BBDD temporal vacía.

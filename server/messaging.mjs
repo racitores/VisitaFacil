@@ -1,3 +1,4 @@
+import { businessToday } from "./domain.mjs";
 import express from "express";
 import { createHmac, timingSafeEqual, randomUUID } from "node:crypto";
 import { transaction } from "./db.mjs";
@@ -226,6 +227,12 @@ export async function processOutbox(
   { companyId = null, reminders = true } = {},
 ) {
   const deadline = Date.now() + 40000;
+  const today = businessToday();
+  const tomorrowDate = new Date(`${today}T12:00:00Z`);
+  tomorrowDate.setUTCDate(tomorrowDate.getUTCDate() + 1);
+  const tomorrow = tomorrowDate.toISOString().slice(0, 10);
+  const obsoleteDate = (v, kind) =>
+    !v.day || v.day < today || (kind === "reminder" && v.day !== tomorrow);
   await pool.query(
     "UPDATE outbox SET state='uncertain',error='Envío interrumpido: comprobar en Meta antes de reenviar.' WHERE state='sending' AND claimed_at<now()-interval '10 minutes'",
   );
@@ -254,7 +261,8 @@ export async function processOutbox(
         !v ||
         v.version !== row.version ||
         !["proposed", "confirmed"].includes(v.status) ||
-        !v.whatsapp_consent
+        !v.whatsapp_consent ||
+        obsoleteDate(v, row.kind)
       ) {
         await db.query("UPDATE outbox SET state='obsolete' WHERE id=$1", [
           row.id,
@@ -287,7 +295,8 @@ export async function processOutbox(
           !current ||
           current.version !== item.version ||
           !["proposed", "confirmed"].includes(current.status) ||
-          !current.whatsapp_consent
+          !current.whatsapp_consent ||
+          obsoleteDate(current, item.kind)
         ) {
           await db.query("UPDATE outbox SET state='obsolete' WHERE id=$1", [
             item.id,

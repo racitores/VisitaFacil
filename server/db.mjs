@@ -30,14 +30,25 @@ export async function transaction(pool, fn) {
   }
 }
 export async function migrate(pool) {
-  const { getMigrations } = await import("better-auth/db/migration");
-  const { authOptions } = await import("./auth.mjs");
   await transaction(pool, async (db) => {
     await db.query("SELECT pg_advisory_xact_lock(63029341)");
     await db.query(
+      "CREATE TABLE IF NOT EXISTS schema_migrations (id text PRIMARY KEY, applied_at timestamptz NOT NULL DEFAULT now())",
+    );
+    await db.query(
       await readFile(new URL("./schema.sql", import.meta.url), "utf8"),
     );
+    const applied = await db.query(
+      "SELECT id FROM schema_migrations WHERE id=$1",
+      ["auth-1.7.28-initial"],
+    );
+    if (!applied.rowCount) {
+      await db.query(
+        await readFile(new URL("./auth-schema.sql", import.meta.url), "utf8"),
+      );
+      await db.query("INSERT INTO schema_migrations(id) VALUES($1)", [
+        "auth-1.7.28-initial",
+      ]);
+    }
   });
-  const { runMigrations } = await getMigrations(authOptions(pool));
-  await runMigrations();
 }
