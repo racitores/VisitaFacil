@@ -1,3 +1,7 @@
+import {buildDemoSeed} from "../dist/demo-seed.mjs";
+import {queryClients} from "../dist/client-directory.mjs";
+import {nextDue} from "../dist/planificacion-domain.mjs";
+import {defaultWeeklySettings} from "../dist/planificacion-semanal.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -77,6 +81,8 @@ test("demo scheduling, pool, single suggestion, completion and capacity share pr
     method: "POST",
     body: { action: "release", reason: "No puede ese día" },
   });
+  s=await demo.request("/state");
+  assert(s.visits.find(x=>x.id===v.id).availability.excluded.includes(plan.day));
   const { suggestion } = await demo.request(`/visits/${v.id}/suggestion`);
   assert(suggestion?.planId);
   await demo.request(`/visits/${v.id}/action`, {
@@ -120,4 +126,28 @@ test("failed storage writes roll back mutations and corrupted data is preserved"
   broken.data.set(DEMO_STORAGE_KEY, "broken-json");
   assert.throws(() => createDemoStore(options(broken)), /Restablecer demo/);
   assert.equal(broken.getItem(DEMO_STORAGE_KEY), "broken-json");
+});
+
+test("expanded demo preserves old data, supplies 120 clients per month and combines pagination filters with weekly drafts",async function seedAndDirectory(){
+ const demoSeed=buildDemoSeed(seed);
+ assert.equal(demoSeed.length,360);assert.equal(new Set(demoSeed.map(c=>c.id)).size,360);
+ for(const month of ["2026-11","2026-12","2027-01"])assert.equal(demoSeed.filter(c=>nextDue(c).startsWith(month)).length,120);
+ assert(demoSeed.every(c=>c.direccion.coordenadas.length===2&&c.revisiones.length===2));
+ const storage=memory(),old=createDemoStore(options(storage));let oldState=await old.request("/state");
+ const original=oldState.clients[0];await old.request(`/clients/${original.id}`,{method:"PUT",body:{...original.data,nombre:"Conservar edición"}});
+ const newer=createDemoStore({storage,seed:demoSeed,seedRevision:2,clock:()=>"2026-11-27"});
+ const state=await newer.request("/state");assert.equal(state.clients.length,449);assert.equal(state.team.length,3);
+ assert.equal(state.clients.find(c=>c.id===original.id).data.nombre,"Conservar edición");
+ assert.equal((await createDemoStore({storage,seed:demoSeed,seedRevision:2,clock:()=>"2026-11-27"}).request("/state")).clients.length,449);
+ const fresh=createDemoStore({storage:memory(),seed:demoSeed,seedRevision:2,clock:()=>"2026-11-27"});
+ const s=await fresh.request("/state");assert(s.plans.length>0);assert(s.visits.some(v=>v.duration!==60));assert(s.visits.some(v=>v.status==="confirmed"));
+ let r=queryClients(s.clients,s.visits,{month:"2027-01",locality:"Madrid",pageSize:10,page:2});assert.equal(r.page,2);assert.equal(r.rows.length,10);assert(r.rows.every(c=>nextDue(c.data).startsWith("2027-01")&&c.data.direccion.localidad==="Madrid"));
+ const first=queryClients(s.clients,s.visits,{month:"2027-01",locality:"Madrid",pageSize:10,page:1});assert(!first.rows.some(c=>r.rows.some(x=>x.id===c.id)));
+ r=queryClients(s.clients,s.visits,{query:"alvaro"});assert(r.total>0);assert(r.rows.every(c=>c.data.nombre.startsWith("Álvaro")));
+ r=queryClients(s.clients,s.visits,{status:"assigned"});assert(r.total>0);assert(r.rows.every(c=>s.visits.some(v=>v.client_id===c.id&&["planned","confirmed"].includes(v.status))));
+ await fresh.request("/weekly/config",{method:"PUT",body:{...defaultWeeklySettings(s.userId),weeksAhead:1,capacity:6,minutes:480,technicianIds:s.team.map(t=>t.user_id),origin:[-3.7,40.4],destination:[-3.7,40.4]}});
+ const run=await fresh.request("/weekly/draft",{method:"POST"});assert(run.payload.assignedCount>0);
+ const before=s.plans.length;assert.equal((await fresh.request("/state")).plans.length,before);
+ const approval=await fresh.request(`/weekly/runs/${run.id}/approve`,{method:"POST",body:{revision:run.revision}});assert.equal(approval.applied,run.payload.assignedCount);
+ assert.equal((await fresh.request(`/weekly/runs/${run.id}/approve`,{method:"POST",body:{revision:run.revision}})).applied,0);
 });

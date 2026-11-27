@@ -94,3 +94,6 @@ Abrir `/?demo=1` o pulsar «Probar sin iniciar sesión» en la portada. Se copia
 «Restablecer demo» pide confirmación antes de regenerar únicamente los datos de esa demo. «Salir de demo» vuelve al acceso normal y conserva los cambios locales. La demo no sustituye una copia de seguridad: borrar datos del navegador o cambiar de dispositivo pierde ese estado. Las consultas explícitas de direcciones/rutas mantienen Photon y OSRM; usar datos ficticios en esta modalidad. Las reglas de planificación de servidor y demo comparten módulos puros para evitar divergencias.
 
 La planificación semanal con X semanas de antelación se describe en [planificacion-semanal.md](planificacion-semanal.md); aún requiere implementar el proceso periódico y el límite estricto de semana.
+
+## Entrega de planificación semanal y demo
+Implementados ajustes por empresa, generación semanal manual o automática de borradores, aprobación transaccional e idempotente, preservación de citas existentes y exclusión por defecto del día rechazado al devolver a bolsa. Demo local ampliada hasta enero de 2027 y directorio con filtros/paginación. Detalles actuales en [planificacion-semanal.md](planificacion-semanal.md).

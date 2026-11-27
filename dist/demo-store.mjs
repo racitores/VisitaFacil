@@ -1,5 +1,6 @@
 import {defaultWeeklySettings,validateWeeklySettings,weekWindow,buildWeeklyDraft,validateWeeklyApproval} from "./planificacion-semanal.mjs";
 import {
+  excludeVisitDay,
   businessToday,
   assert,
   date,
@@ -362,6 +363,7 @@ function seedScenario(){if(seedRevision<2)return;for(const [i,v] of state.visits
             typeof b.reason === "string" && b.reason.trim(),
             "Indica el motivo.",
           );
+          if(b.action==="release"&&v.plan_id&&b.excludeDay!==false){const p=state.plans.find(p=>p.id===v.plan_id);if(p)v.availability=excludeVisitDay(v,p.day);}
           v.plan_id = null;
           v.status = b.action === "release" ? "pool" : "cancelled";
           v.reason = b.reason;

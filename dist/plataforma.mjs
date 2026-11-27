@@ -408,11 +408,11 @@ async function action(name, id) {
       name === "release"
         ? "Devolver a bolsa"
         : "Cancelar revisión definitivamente",
-      field("reason", "Motivo"),
+      field("reason", "Motivo")+(name==="release"?'<label><input name="excludeDay" type="checkbox" checked> No volver a proponer el día anterior</label>':""),
       (f) =>
         api(`/visits/${id}/action`, {
           method: "POST",
-          body: { action: name, reason: f.reason },
+          body: { action: name, reason: f.reason, excludeDay:f.excludeDay==="on" },
         }),
     );
   } else if (name === "complete") {

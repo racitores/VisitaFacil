@@ -1,5 +1,5 @@
 import {runWeeklyScheduler} from "./weekly.mjs";
-import { businessToday } from "./domain.mjs";
+import { businessToday,excludeVisitDay } from "./domain.mjs";
 import express from "express";
 import { createHmac, timingSafeEqual, randomUUID } from "node:crypto";
 import { transaction } from "./db.mjs";
@@ -199,6 +199,7 @@ export async function reply(pool, message) {
         v.id,
       ]);
     else if (current && ["change", "cancel"].includes(action)) {
+      if(v.plan_id){const p=(await db.query("SELECT to_char(day,'YYYY-MM-DD') AS day FROM plans WHERE id=$1",[v.plan_id])).rows[0];if(p)await db.query("UPDATE visits SET availability=$1 WHERE id=$2",[excludeVisitDay(v,p.day),v.id]);}
       await db.query(
         "UPDATE visits SET status='pool',plan_id=NULL,reason=$1,version=version+1 WHERE id=$2",
         [

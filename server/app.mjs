@@ -5,6 +5,7 @@ import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 import { database, transaction } from "./db.mjs";
 import { createAuth } from "./auth.mjs";
 import {
+  excludeVisitDay,
   businessToday,
   assert,
   date,
@@ -537,10 +538,12 @@ export function createApp({
             b.reason.length <= 1000,
           "Indica el motivo.",
         );
-        await db.query(
-          "UPDATE visits SET plan_id=NULL,status=$1,reason=$2,version=version+1 WHERE id=$3",
-          [b.action === "release" ? "pool" : "cancelled", b.reason, visit.id],
-        );
+        let availability=visit.availability;
+        if(b.action==="release"&&visit.plan_id&&b.excludeDay!==false){
+          const p=(await db.query("SELECT day FROM plans WHERE id=$1",[visit.plan_id])).rows[0];
+          if(p)availability=excludeVisitDay(visit,isoDay(p.day));
+        }
+        await db.query("UPDATE visits SET plan_id=NULL,status=$1,reason=$2,version=version+1,availability=$4 WHERE id=$3",[b.action==="release"?"pool":"cancelled",b.reason,visit.id,availability]);
       }
       if (b.action === "complete") {
         assert(visit.plan_id, "La visita debe estar asignada.");
