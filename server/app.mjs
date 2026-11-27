@@ -1,3 +1,4 @@
+import {weeklySettings,saveWeeklySettings,createWeeklyDraft,approveWeeklyDraft} from "./weekly.mjs";
 import express from "express";
 import { randomUUID, randomBytes, createHash } from "node:crypto";
 import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
@@ -188,6 +189,11 @@ export function createApp({
     };
   }
   app.get("/api/state", async (req, res) => res.json(await state(req)));
+  app.get('/api/weekly/config',async(req,res)=>{admin(req);res.json(await weeklySettings(pool,req.company,req.user.id));});
+  app.put('/api/weekly/config',async(req,res)=>{admin(req);res.json(await saveWeeklySettings(pool,req.company,req.user.id,req.body));});
+  app.get('/api/weekly/runs',async(req,res)=>{admin(req);const r=await pool.query("SELECT *,to_char(week_start,'YYYY-MM-DD') AS week_start,to_char(week_end,'YYYY-MM-DD') AS week_end FROM weekly_runs WHERE company_id=$1 ORDER BY weekly_runs.week_start DESC LIMIT 12",[req.company]);res.json(r.rows);});
+  app.post('/api/weekly/draft',async(req,res)=>{admin(req);res.json(await createWeeklyDraft(pool,req.company,req.user.id));});
+  app.post('/api/weekly/runs/:id/approve',async(req,res)=>{admin(req);res.json(await approveWeeklyDraft(pool,req.company,req.user.id,req.params.id,req.body.revision));});
   app.post("/api/invitations", async (req, res) => {
     admin(req);
     const { email, role } = req.body;
