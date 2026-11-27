@@ -70,7 +70,7 @@ try {
   await page
     .getByText("El cliente llama y no puede", { exact: true })
     .waitFor();
-  await page.locator("[data-action=suggest]").first().click();
+  await page.locator(".card").filter({hasText:"El cliente llama y no puede"}).locator("[data-action=suggest]").click();
   await page.locator("#editor").waitFor({ state: "visible" });
   await page.locator("#editor button[type=submit]").click();
   await page.locator("#editor").waitFor({ state: "hidden" });
@@ -101,11 +101,9 @@ try {
     .getByRole("button", { name: "Cerrar sesión", exact: true })
     .click();
   await page.locator("#access").waitFor({ state: "visible" });
-  await page.getByText("Ver demostración", { exact: true }).click();
-  await page
-    .getByRole("link", { name: "Directorio de demostración", exact: true })
-    .click();
-  await page.locator("#clients li").first().waitFor();
+  assert.equal(await page.locator(".site-nav a").count(),1);
+  await page.getByRole("link",{name:"Demo",exact:true}).click();
+  await page.getByText("DEMO · Datos ficticios",{exact:true}).waitFor();
   await page.goto("http://localhost:31928/revisiones.html");
   await page.locator("#route-form").waitFor();
   assert.deepEqual(errors, []);

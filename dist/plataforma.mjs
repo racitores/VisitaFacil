@@ -1,3 +1,5 @@
+import {createWeeklyUI} from "./weekly-ui.mjs";
+import {createClientDirectory} from "./client-directory.mjs";
 import { actualizarParadas, localizarDireccion } from "./ruta.mjs";
 const demoMode = new URLSearchParams(location.search).get("demo") === "1";
 let demoStore;
@@ -36,6 +38,8 @@ function notice(text, error = false) {
   $("#notice").textContent = text;
   $("#notice").classList.toggle("error", error);
 }
+const weeklyUI=createWeeklyUI({api,getState:()=>state,modal,field,locate:localizarDireccion,today,escape,refresh,notice,isDemo:demoMode,setMessage:message=>{pendingMessage=message;}});
+const directory=createClientDirectory({getState:()=>state,escape});
 async function api(path, { method = "GET", body } = {}) {
   if (demoMode) {
     if (!demoStore) throw new Error("La demo todavía no está preparada.");
@@ -113,14 +117,14 @@ function render() {
       b.hidden =
         (demoMode && ["team", "messages"].includes(b.dataset.tab)) ||
         (!admin() &&
-          ["pool", "team", "messages", "clients"].includes(b.dataset.tab));
+          ["pool", "team", "messages", "clients", "weekly"].includes(b.dataset.tab));
     });
   if (!admin() && tab !== "agenda") tab = "agenda";
   $("#route-container").hidden = true;
   const content = $("#content");
   if (tab === "clients") {
-    content.innerHTML = `<div class="section-head"><h1>Clientes</h1><div class="actions"><button data-action="new-client">Añadir cliente</button><label>Importar JSON <input id="import" type="file" accept="application/json"></label></div></div><label>Buscar <input id="client-search" type="search" placeholder="Nombre, teléfono o dirección"></label><div id="client-cards" class="cards"></div>`;
-    renderClients("");
+    content.innerHTML = `<div class="section-head"><h1>Clientes</h1><div class="actions"><button data-action="new-client">Añadir cliente</button><label>Importar JSON <input id="import" type="file" accept="application/json"></label></div></div><label>Buscar <input id="client-search" type="search" placeholder="Nombre, teléfono o dirección"></label><div id="directory-controls"></div><div id="client-cards" class="cards"></div><nav id="directory-pages" aria-label="Páginas de clientes"></nav>`;
+    renderClients();
   } else if (tab === "agenda") {
     if (!agendaDay)
       agendaDay =
@@ -137,6 +141,9 @@ function render() {
         .join("") ||
       '<p class="empty">Crea la primera jornada para empezar a asignar visitas.</p>'
     }</div>`;
+  } else if(tab==='weekly'){
+    content.innerHTML='<h1>Planificación semanal</h1><p>Las citas existentes se conservan y las visitas sin hueco siguen en bolsa.</p><div id="weekly-content" aria-live="polite">Cargando…</div>';
+    guard(()=>weeklyUI.load());
   } else if (tab === "pool") {
     const visits = state.visits.filter((v) => v.status === "pool");
     content.innerHTML = `<h1>Bolsa de visitas <span class="badge">${visits.length}</span></h1><p>Visitas pendientes de día o que necesitan una nueva cita. La sugerencia devuelve una sola opción compatible; avisa si la revisión ya está vencida.</p><div class="cards">${visits.map(visitCard).join("") || '<p class="empty">No hay visitas pendientes de asignar.</p>'}</div>`;
@@ -165,22 +172,7 @@ function render() {
     });
   }
 }
-function renderClients(query) {
-  const q = query.toLocaleLowerCase("es");
-  $("#client-cards").innerHTML =
-    state.clients
-      .filter(
-        (c) =>
-          !c.archived &&
-          JSON.stringify(c.data).toLocaleLowerCase("es").includes(q),
-      )
-      .map(
-        (c) =>
-          `<article class="card"><h3>${escape(c.data.nombre)}</h3><p>${escape(c.data.telefono)} · ${escape(c.data.email)}</p><p>${escape(c.data.direccion.via)}, ${escape(c.data.direccion.pisoPuerta)}<br>${escape(c.data.direccion.codigoPostal)} ${escape(c.data.direccion.localidad)}, ${escape(c.data.direccion.provincia)}</p><p>${escape(c.data.equipo ?? "Equipo sin registrar")}</p><p class="muted">Alta: ${escape(c.data.fechaAlta)} · WhatsApp: ${c.whatsapp_consent ? "autorizado" : "sin consentimiento"}</p><details><summary>Intervenciones (${c.data.revisiones.length})</summary>${c.data.revisiones.map((r) => `<p class="review-log">${escape(r.fecha)} · ${escape(r.descripcion)}</p>`).join("")}</details><div class="actions"><button data-action="edit-client" data-id="${c.id}">Editar</button><button data-action="archive" data-id="${c.id}">Archivar</button></div></article>`,
-      )
-      .join("") ||
-    '<p class="empty">No hay clientes. Puedes añadirlos o importar el JSON.</p>';
-}
+function renderClients(query){directory.render(query);}
 function reviewFields(r = { fecha: today(), descripcion: "" }) {
   return `<div class="history-row"><label>Fecha<input data-review-date type="date" value="${escape(r.fecha)}" required></label><label>Trabajo realizado<textarea data-review-work required maxlength="5000">${escape(r.descripcion)}</textarea></label><button type="button" class="remove-review">Quitar intervención</button></div>`;
 }
@@ -216,6 +208,7 @@ function endpoints() {
 }
 const technicianOptions = () => state.team.map((t) => [t.user_id, t.name]);
 async function action(name, id) {
+  if(await weeklyUI.action(name,id))return;
   const v = state.visits.find((v) => v.id === id);
   if (name === "new-client" || name === "edit-client") {
     const row = state.clients.find((c) => c.id === id),
@@ -415,11 +408,11 @@ async function action(name, id) {
       name === "release"
         ? "Devolver a bolsa"
         : "Cancelar revisión definitivamente",
-      field("reason", "Motivo"),
+      field("reason", "Motivo")+(name==="release"?'<label><input name="excludeDay" type="checkbox" checked> No volver a proponer el día anterior</label>':""),
       (f) =>
         api(`/visits/${id}/action`, {
           method: "POST",
-          body: { action: name, reason: f.reason },
+          body: { action: name, reason: f.reason, excludeDay:f.excludeDay==="on" },
         }),
     );
   } else if (name === "complete") {
@@ -618,6 +611,7 @@ $("#tabs").addEventListener("click", (e) => {
   }
 });
 $("#content").addEventListener("click", (e) => {
+  if(directory.click(e))return;
   const b = e.target.closest("[data-action]");
   if (b) guard(() => action(b.dataset.action, b.dataset.id));
 });
@@ -625,6 +619,7 @@ $("#content").addEventListener("input", (e) => {
   if (e.target.id === "client-search") renderClients(e.target.value);
 });
 $("#content").addEventListener("change", (e) => {
+  if(directory.change(e))return;
   if (e.target.id === "agenda-day") {
     agendaDay = e.target.value;
     render();
@@ -716,13 +711,15 @@ await guard(async () => {
     $("#switch-company").hidden = true;
     $("#company-select").disabled = true;
     $("#logout").textContent = "Salir de demo";
+    $(".brand").href="./?demo=1";
     const { createDemoStore } = await import("./demo-store.mjs");
     const response = await fetch("./clientes.json");
     if (!response.ok)
       throw new Error("No se pudieron cargar los clientes ficticios.");
-    const seed = (await response.json()).clientes;
+    const {buildDemoSeed}=await import("./demo-seed.mjs");
+    const seed = buildDemoSeed((await response.json()).clientes);
     const initialize = () => {
-      demoStore = createDemoStore({ storage: localStorage, seed });
+      demoStore = createDemoStore({ storage: localStorage, seed, seedRevision:2 });
     };
     $("#demo-reset").addEventListener("click", () =>
       modal(

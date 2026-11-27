@@ -187,3 +187,5 @@ export function bestSuggestion(visit, plans, visits, clients, today) {
   }
   return best;
 }
+
+export function excludeVisitDay(visit,day){date(day);return {...(visit.availability??{}),excluded:[...new Set([...(visit.availability?.excluded??[]),day])]};}

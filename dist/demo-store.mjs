@@ -1,4 +1,6 @@
+import {defaultWeeklySettings,validateWeeklySettings,weekWindow,buildWeeklyDraft,validateWeeklyApproval} from "./planificacion-semanal.mjs";
 import {
+  excludeVisitDay,
   businessToday,
   assert,
   date,
@@ -15,10 +17,11 @@ const company = "demo-local",
   technician = "demo-technician",
   copy = (value) => structuredClone(value);
 const uid = () => crypto.randomUUID();
-export function createDemoStore({ storage, seed, clock = businessToday }) {
+export function createDemoStore({ storage, seed, clock = businessToday, seedRevision=1 }) {
   let state;
   const fresh = () => ({
     version: 1,
+    demoSeedRevision:seedRevision,
     company: { id: company, name: "Empresa de demostración" },
     clients: seed.map((data) => ({
       id: uid(),
@@ -68,8 +71,8 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
         due_date: due,
         status: "pool",
         plan_id: null,
-        duration: 60,
-        availability: {},
+        duration: Number.isInteger(c.data.demoPlan?.duration)?c.data.demoPlan.duration:60,
+        availability: copy(c.data.demoPlan?.availability??{}),
         reason: "",
         version: 1,
       });
@@ -77,11 +80,14 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
     }
     return { created };
   }
+function ensureDemoTeam(){if(seedRevision<2)return;for(const t of [{user_id:technician,name:"Ana · Centro",email:"ana@example.com",role:"admin"},{user_id:"demo-tech-norte",name:"Luis · Norte",email:"luis@example.com",role:"technician"},{user_id:"demo-tech-sur",name:"Marta · Sur",email:"marta@example.com",role:"technician"}])if(!state.team.some(x=>x.user_id===t.user_id))state.team.push(t);}
+function demoUntil(){return seedRevision>=2?"2027-01-31":clock().slice(0,4)+"-12-31";}
+function seedScenario(){if(seedRevision<2)return;for(const [i,v] of state.visits.filter(v=>v.status==="pool").entries()){const c=state.clients.find(c=>c.id===v.client_id);if(!c.data.demoPlan?.preset)continue;let day;const d=new Date(`${v.due_date}T12:00:00Z`);for(let n=0;n<7;n++,d.setUTCDate(d.getUTCDate()-1)){const candidate=d.toISOString().slice(0,10);if(candidate<clock())break;if(d.getUTCDay()!==0&&d.getUTCDay()!==6&&available(v,candidate)){day=candidate;break;}}if(!day)continue;const tech=state.team[i%state.team.length].user_id;let p=state.plans.find(p=>p.day===day&&p.technician_id===tech);if(!p)p=addPlan({day,name:"Demo · Visitas ya acordadas",technicianId:tech,capacity:6,minutes:480,origin:[-3.7038,40.4168],destination:[-3.7038,40.4168]});try{assign(v,p.id);if(c.data.demoPlan.confirmed)v.status="confirmed";}catch{/* A full preset day leaves this fixture in the pool. */}}}
   function reset() {
     const old = state;
     try {
       state = fresh();
-      generate(clock().slice(0, 4) + "-12-31");
+      ensureDemoTeam();generate(demoUntil());seedScenario();
       save();
     } catch (e) {
       state = old;
@@ -118,6 +124,10 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
         "Los datos locales de la demo no se pueden leer. Pulsa Restablecer demo para empezar de nuevo.",
       );
     }
+    if(seedRevision>=2&&(state.demoSeedRevision??1)<seedRevision){
+      for(const data of seed)if(!state.clients.some(c=>c.data.id===data.id))state.clients.push({id:uid(),company_id:company,data:clientData(copy(data)),archived:false,whatsapp_consent:false});
+      ensureDemoTeam();generate(demoUntil());seedScenario();state.demoSeedRevision=seedRevision;save();
+    }
   }
   load();
   const visit = (id) => {
@@ -150,7 +160,7 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
       "Nombre del grupo obligatorio.",
     );
     assert(
-      b.technicianId === technician,
+      state.team.some(t=>t.user_id===b.technicianId),
       "Selecciona el técnico de demostración.",
     );
     assert(
@@ -205,6 +215,8 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
   }
   async function request(path, { method = "GET", body: b = {} } = {}) {
     if (path === "/state") return copy(state);
+    if(path==="/weekly/config"&&method==="GET")return copy(state.weeklySettings??defaultWeeklySettings(technician));
+    if(path==="/weekly/runs"&&method==="GET")return copy([...(state.weeklyRuns??[])].sort((a,b)=>b.week_start.localeCompare(a.week_start)).slice(0,12));
     if (path === "/companies")
       return [copy({ ...state.company, role: "admin" })];
     if (path === "/auth/sign-out") return { ok: true };
@@ -229,7 +241,21 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
     const previous = copy(state);
     try {
       let result;
-      if (path === "/visits/generate") {
+      if(path==='/weekly/config'&&method==='PUT'){
+        state.weeklySettings=validateWeeklySettings({...b,enabled:false},state.team.map(t=>t.user_id));result=copy(state.weeklySettings);
+      }else if(path==='/weekly/draft'){
+        const config=validateWeeklySettings(state.weeklySettings??{},state.team.map(t=>t.user_id));const window=weekWindow(clock(),config.weeksAhead);generate(window.end);
+        const payload=buildWeeklyDraft({...state,settings:config,today:clock()});state.weeklyRuns??=[];
+        let run=state.weeklyRuns.find(r=>r.week_start===window.start);
+        if(!run){run={id:uid(),company_id:company,week_start:window.start,week_end:window.end,revision:0};state.weeklyRuns.push(run);}
+        Object.assign(run,{payload,config:copy(config),status:'draft',revision:run.revision+1,updated_at:new Date().toISOString()});result=copy(run);
+      }else if(parts[0]==='weekly'&&parts[1]==='runs'&&parts[3]==='approve'){
+        const run=(state.weeklyRuns??[]).find(r=>r.id===parts[2]);assert(run,'Borrador no encontrado.');assert(run.revision===b.revision,'El borrador ha cambiado. Actualiza la pantalla.');
+        if(run.status==='approved')return {applied:0,alreadyApproved:true};
+        validateWeeklyApproval({...state,payload:run.payload,memberIds:state.team.map(t=>t.user_id),today:clock()});let applied=0;
+        for(const g of run.payload.groups){let planId=g.existingPlanId;if(!planId)planId=addPlan({...g,technicianId:g.technicianId}).id;for(const item of g.visits){const v=visit(item.visitId);assign(v,planId);event(v,'weekly_assigned',{runId:run.id,revision:run.revision,late:item.late});applied++;}}
+        run.status='approved';result={applied};
+      }else if (path === "/visits/generate") {
         date(b.until);
         result = generate(b.until);
       } else if (path === "/clients/import") {
@@ -296,7 +322,7 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
           capacity: b.capacity,
           minutes: b.minutes,
           start: b.day,
-          occupied: state.plans.map((p) => p.day),
+          occupied: state.plans.filter(p=>p.technician_id===b.technicianId).map((p) => p.day),
         });
         for (const [i, p] of proposal.plans.entries()) {
           const plan = addPlan({
@@ -337,6 +363,7 @@ export function createDemoStore({ storage, seed, clock = businessToday }) {
             typeof b.reason === "string" && b.reason.trim(),
             "Indica el motivo.",
           );
+          if(b.action==="release"&&v.plan_id&&b.excludeDay!==false){const p=state.plans.find(p=>p.id===v.plan_id);if(p)v.availability=excludeVisitDay(v,p.day);}
           v.plan_id = null;
           v.status = b.action === "release" ? "pool" : "cancelled";
           v.reason = b.reason;

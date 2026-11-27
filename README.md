@@ -60,3 +60,11 @@ Noviembre de 2026 tiene 50 visitas ficticias en 30 localidades de la Comunidad d
 Abrir [la demo local](https://caldera-gestion.vercel.app/?demo=1) o pulsar «Probar sin iniciar sesión». Incluye los clientes ficticios, agenda, bolsa, sugerencias y rutas. Los cambios se conservan solo en el navegador y no modifican EPA ni la BBDD. Se puede restablecer la demo desde su aviso superior.
 
 Diseño pendiente de [planificación semanal con X semanas de antelación](docs/planificacion-semanal.md).
+
+## Planificación semanal y demo ampliada
+
+La pestaña **Semanal** permite preparar una semana con X semanas de antelación, revisar el borrador y aprobarlo. La generación automática se activa por empresa en sus ajustes y utiliza el cron existente. No envía citas al aprobar.
+
+[Demo completa sin cuenta](https://caldera-gestion.vercel.app/?demo=1): 360 clientes ficticios con vencimientos de noviembre de 2026 a enero de 2027, tres técnicos, duraciones y disponibilidades variadas. El menú tiene un único enlace Demo. El directorio añade páginas y filtros combinables. Los datos reales de las empresas no se alteran.
+
+Consulta [funcionamiento, límites y fuentes](docs/planificacion-semanal.md).

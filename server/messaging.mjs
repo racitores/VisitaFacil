@@ -1,4 +1,5 @@
-import { businessToday } from "./domain.mjs";
+import {runWeeklyScheduler} from "./weekly.mjs";
+import { businessToday,excludeVisitDay } from "./domain.mjs";
 import express from "express";
 import { createHmac, timingSafeEqual, randomUUID } from "node:crypto";
 import { transaction } from "./db.mjs";
@@ -59,13 +60,10 @@ export function mountMessaging(
         !equal(req.headers.authorization, `Bearer ${process.env.CRON_SECRET}`)
       )
         return res.sendStatus(401);
-      if (
-        !process.env.WHATSAPP_TOKEN ||
-        !process.env.WHATSAPP_PHONE_ID ||
-        !process.env.WHATSAPP_TEMPLATE_REMINDER
-      )
-        return res.status(503).json({ error: "WhatsApp sin configurar." });
-      res.json(await processOutbox(getPool(), transport));
+      const planning=await runWeeklyScheduler(getPool());
+      const configured=!!(process.env.WHATSAPP_TOKEN&&process.env.WHATSAPP_PHONE_ID&&process.env.WHATSAPP_TEMPLATE_REMINDER);
+      const messages=configured?await processOutbox(getPool(),transport,{budgetMs:15000}):{sent:0,failed:0};
+      res.json({...messages,planning,whatsappConfigured:configured});
     } catch (e) {
       next(e);
     }
@@ -201,6 +199,7 @@ export async function reply(pool, message) {
         v.id,
       ]);
     else if (current && ["change", "cancel"].includes(action)) {
+      if(v.plan_id){const p=(await db.query("SELECT to_char(day,'YYYY-MM-DD') AS day FROM plans WHERE id=$1",[v.plan_id])).rows[0];if(p)await db.query("UPDATE visits SET availability=$1 WHERE id=$2",[excludeVisitDay(v,p.day),v.id]);}
       await db.query(
         "UPDATE visits SET status='pool',plan_id=NULL,reason=$1,version=version+1 WHERE id=$2",
         [
@@ -224,9 +223,9 @@ export async function reply(pool, message) {
 export async function processOutbox(
   pool,
   transport = sendWhatsApp,
-  { companyId = null, reminders = true } = {},
+  { companyId = null, reminders = true, budgetMs = 40000 } = {},
 ) {
-  const deadline = Date.now() + 40000;
+  const deadline = Date.now() + budgetMs;
   const today = businessToday();
   const tomorrowDate = new Date(`${today}T12:00:00Z`);
   tomorrowDate.setUTCDate(tomorrowDate.getUTCDate() + 1);

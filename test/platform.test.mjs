@@ -194,6 +194,9 @@ test("generates once, enforces capacity, releases and reassigns", async () => {
   assert.equal(s.visits[0].status, "pool");
   assert.equal(s.visits[0].plan_id, null);
   assert.equal(s.visits[0].reason, "No puede el cliente");
+  assert(s.visits[0].availability.excluded.includes(day));
+  assert.equal((await request("/visits/"+visitA+"/action",{method:"POST",body:{action:"assign",planId:planA}})).status,400);
+  await request("/visits/"+visitA+"/action",{method:"POST",body:{action:"availability",duration:60,availability:{}}});
   assert.equal(
     (
       await request("/visits/" + visitA + "/action", {
@@ -469,7 +472,7 @@ test("WhatsApp queue and signed replies are idempotent; old replies cannot confi
   );
   await request(`/visits/${winner.id}/action`, {
     method: "POST",
-    body: { action: "release", reason: "Cambio de día" },
+    body: { action: "release", reason: "Cambio de día",excludeDay:false },
   });
   await request(`/visits/${winner.id}/action`, {
     method: "POST",
@@ -590,4 +593,48 @@ test("repeated migrations preserve customer and auth data", async () => {
   await migrate(database.pool);
   const after = (await request("/state")).body;
   assert.deepEqual(after, before);
+});
+
+test("weekly drafts preserve appointments, reject stale capacity atomically and approve once under concurrency",async function weeklyIntegration(){
+ const {createWeeklyDraft,approveWeeklyDraft,runWeeklyScheduler}=await import("../server/weekly.mjs");
+ const company=(await request("/companies",{method:"POST",body:{name:"Empresa semanal"}})).body.id;
+ const call=(path,options={})=>request(path,{company,...options});
+ const user=(await call("/state")).body.userId;
+ for(const [nombre,fechaAlta] of [["Fija","2029-11-25"],["Atrasada","2019-01-01"],["Miércoles","2029-11-27"],["Futura","2029-12-02"],["No disponible","2029-11-28"]]){
+ const r=await call("/clients",{method:"POST",body:{nombre,fechaAlta,revisiones:[],direccion:{via:"Calle de Alcalá, 10",localidad:"Madrid",coordenadas:[-3.7,40.4]}}});assert.equal(r.status,201,JSON.stringify(r.body));
+ }
+ await call("/visits/generate",{method:"POST",body:{until:"2030-12-31"}});
+ let state=(await call("/state")).body;
+ const visit=name=>state.visits.find(v=>state.clients.find(c=>c.id===v.client_id).data.nombre===name);
+ const fixed=visit("Fija").id,overdue=visit("Atrasada").id,future=visit("Futura").id;
+ const plan=(await call("/plans",{method:"POST",body:{day:"2030-11-25",name:"Conservada",technicianId:user,capacity:2,minutes:120,origin:[-3.7,40.4],destination:[-3.7,40.4]}})).body;
+ assert(plan.id);
+ await call(`/visits/${fixed}/action`,{method:"POST",body:{action:"assign",planId:plan.id}});
+ await call(`/visits/${fixed}/action`,{method:"POST",body:{action:"confirm"}});
+ await call(`/visits/${visit("No disponible").id}/action`,{method:"POST",body:{action:"availability",duration:60,availability:{from:"2030-12-05"}}});
+ const config={enabled:true,weeksAhead:3,capacity:2,minutes:120,weekdays:[1,2,3,4,5],technicianIds:[user],origin:[-3.7,40.4],destination:[-3.7,40.4]};
+ assert.equal((await call("/weekly/config",{method:"PUT",body:config})).status,200);
+ assert.equal((await request("/weekly/config",{cookie:cookieTech})).status,403);
+ let run=await createWeeklyDraft(database.pool,company,user,{today:"2030-11-04"});
+ assert.equal(run.payload.assignedCount,2);assert.equal(run.payload.unassigned.length,1);assert.equal(run.payload.preservedCount,1);
+ assert.equal(run.week_start,"2030-11-25");
+ const listed=await call("/weekly/runs");assert.equal(listed.status,200,JSON.stringify(listed.body));assert.equal(listed.body[0].week_start,"2030-11-25");
+ assert.equal((await call("/state")).body.plans.length,1);
+ assert.equal((await request(`/weekly/runs/${run.id}/approve`,{cookie:cookieB,company:companyB,method:"POST",body:{revision:run.revision}})).status,404);
+ assert.equal((await call(`/visits/${future}/action`,{method:"POST",body:{action:"assign",planId:plan.id}})).status,200);
+ await assert.rejects(()=>approveWeeklyDraft(database.pool,company,user,run.id,run.revision,{today:"2030-11-04"}),/capacidad/);
+ state=(await call("/state")).body;assert.equal(state.visits.find(v=>v.id===overdue).status,"pool");
+ run=await createWeeklyDraft(database.pool,company,user,{today:"2030-11-04"});
+ const results=await Promise.all([1,2].map(()=>approveWeeklyDraft(database.pool,company,user,run.id,run.revision,{today:"2030-11-04"})));
+ assert.deepEqual(results.map(r=>r.applied).sort(),[0,2]);
+ state=(await call("/state")).body;
+ assert.equal(state.visits.find(v=>v.id===fixed).status,"confirmed");
+ assert.equal(state.visits.find(v=>v.id===fixed).plan_id,plan.id);
+ assert(state.plans.every(p=>p.day>="2030-11-25"&&p.day<="2030-12-01"));
+ assert.equal((await runWeeklyScheduler(database.pool,{today:"2030-11-04"})).generated,1);
+ assert.equal((await runWeeklyScheduler(database.pool,{today:"2030-11-05"})).generated,0);
+ delete process.env.WHATSAPP_TOKEN;delete process.env.WHATSAPP_PHONE_ID;
+ process.env.CRON_SECRET="weekly-test-cron-secret";
+ const cron=await request("/cron/messages",{cookie:null,headers:{Authorization:"Bearer weekly-test-cron-secret"}});
+ assert.equal(cron.status,200,JSON.stringify(cron.body));assert.equal(cron.body.whatsappConfigured,false);assert.equal(cron.body.planning.failed,0);
 });

@@ -1,33 +1,34 @@
-# Planificar cada semana con X semanas de antelación
+# Planificación semanal
 
-## Funcionamiento propuesto
+El administrador abre **Semanal → Cambiar ajustes**, configura X semanas de antelación (0–52), técnicos, días laborables, máximo de visitas por técnico/día, minutos de intervención y origen/destino. Puede usar GPS o introducir coordenadas. Si activa la generación automática, el cron diario existente crea un borrador por semana y empresa; normalmente el lunes, con recuperación en ejecuciones posteriores. Está desactivada por defecto.
 
-Cada empresa define X semanas de antelación, días laborables, técnicos disponibles y capacidad de cada jornada. Cada lunes, el proceso calcula el lunes de la semana actual más X semanas. La semana objetivo va de ese lunes al domingo siguiente.
+**Generar borrador semanal** calcula el lunes de la semana actual en Europe/Madrid más X semanas hasta su domingo. Con X=0 excluye días ya pasados. Detecta revisiones anuales según última intervención/alta; incluye las atrasadas todavía en bolsa y excluye vencimientos posteriores al domingo. No mueve citas asignadas ni completadas. Las visitas ya asignadas consumen capacidad y minutos.
 
-Ejemplo: ejecución el lunes 30/11/2026 con X=3 → semana del 21 al 27/12/2026. X=0 significa la semana en curso; X=1, la siguiente.
+Ordena por vencimiento y elige el hueco compatible que menos distancia geográfica adicional aporta a una ruta de vecino más cercano, con desempate por fecha. Respeta disponibilidad, días excluidos y plazo de revisión; las visitas vencidas antes del periodo se permiten mostrando el retraso. Un cliente con otra visita activa asignada no recibe una segunda asignación.
 
-## A quién le toca
+Es una heurística geográfica: no representa un óptimo global ni calcula tráfico o minutos por carretera. Los minutos configurados corresponden a intervenciones. La consulta de ruta de la agenda sigue disponible para revisar desplazamientos.
 
-El vencimiento actual se calcula sumando un año a la última intervención registrada; si no hay intervenciones, al alta. Un 29 de febrero pasa al 28 si el siguiente año no es bisiesto. Por ahora todas las intervenciones del historial reinician ese cálculo: distinguir reparaciones de revisión anual requeriría añadir el tipo de intervención.
+El borrador muestra grupos, citas conservadas y motivos de exclusión. **Revisar y aprobar** aplica todas sus asignaciones en una transacción, revalidando versiones, disponibilidad, técnicos, rutas y capacidad bajo bloqueo por empresa. Si algo ha cambiado, se rechaza completo y debe regenerarse. Una segunda aprobación no duplica asignaciones.
 
-Se seleccionan las revisiones cuyo vencimiento cae en la semana objetivo y las anteriores que sigan pendientes. Solo se incluyen clientes activos y visitas sin asignar. Las visitas ya asignadas conservan su día; las realizadas y las canceladas definitivamente no se vuelven a proponer. Cada vencimiento de un cliente tiene una sola visita: repetir el proceso no crea duplicados.
+Al devolver una visita a bolsa se excluye por defecto el día rechazado; el formulario permite desmarcarlo. Las respuestas de cambio/cancelación por WhatsApp también excluyen ese día. Desde Bolsa se pueden modificar disponibilidad y duración, asignar manualmente o pedir una única mejor opción.
 
-Una revisión rechazada o aplazada vuelve a bolsa. Antes de incluirla se revisan sus nuevas fechas disponibles y cualquier exclusión; no se vuelve a proponer el día que el cliente acaba de rechazar si se ha registrado como excluido.
+## Persistencia y ejecución
+Tablas nuevas: weekly_settings y weekly_runs. Configuración por empresa; borrador único por empresa/semana objetivo, con revisión incremental. El cron GET /api/cron/messages conserva autenticación Bearer CRON_SECRET, procesa hasta 20 empresas por ejecución y un presupuesto de 15 segundos para planificación. Cada empresa se marca con su semana de referencia después de guardar el borrador; los fallos pueden reintentarse. La configuración debe tener técnicos y coordenadas válidas.
 
-## Reparto y revisión humana
+El cron crea borradores y nunca los aprueba. No envía propuestas de cita automáticamente al aprobar. WhatsApp se procesa aparte solo si está configurado, y su ausencia no bloquea planificación.
 
-1. Reservar las citas ya confirmadas y las asignaciones manuales.
-2. Priorizar las revisiones atrasadas y los vencimientos más próximos.
-3. Agrupar por proximidad geográfica entre los días laborables de la semana objetivo, respetando técnico, número máximo de visitas, duración y disponibilidad del cliente.
-4. Mantener en bolsa las visitas sin coordenadas, sin disponibilidad compatible o sin hueco. Mostrar el motivo y una única mejor alternativa cuando exista.
-5. Guardar el resultado como borrador. Administración lo revisa antes de aprobar y proponer las citas por WhatsApp.
+## Demo
+Un único enlace **Demo** en el menú abre /?demo=1 sin iniciar sesión. Clientes, Agenda, Bolsa y Semanal comparten el adaptador local. Las tareas automáticas y los envíos externos no funcionan en demo. Todo cambio queda en el navegador.
 
-El proceso debe limitarse a la semana elegida, sin desplazar silenciosamente visitas a semanas posteriores. Al ejecutarse de nuevo, conserva las citas existentes y completa huecos. Un vencimiento atrasado debe mostrarse expresamente como fuera de plazo. Los minutos disponibles actuales contemplan intervenciones; los tiempos por carretera se consultan en el planificador y todavía no forman parte de la restricción de jornada.
+La base ampliada contiene 360 clientes ficticios: 120 con revisión en noviembre de 2026, 120 en diciembre y 120 en enero de 2027. Incluye tres técnicos, cinco duraciones, restricciones de disponibilidad y algunas citas ya acordadas. Los usuarios con la demo anterior conservan sus 89 registros y cambios; reciben los 360 nuevos sin duplicarlos. Restablecer demo vuelve a la base de 360, sin tocar otros datos del navegador ni ninguna empresa real.
 
-La sugerencia individual actual estima cercanía geográfica. La ruta final de cada grupo se puede calcular por carretera con el planificador conservado. Las cancelaciones definitivas y las bajas de WhatsApp siguen siendo acciones distintas.
+Se reutilizan direcciones públicas exactas de bibliotecas de Madrid y referencias de ayuntamientos de Alcalá de Henares, Alcobendas y Getafe. Los nombres, contactos y unidades son ficticios; varias unidades comparten una referencia pública. No son domicilios de clientes reales ni contactos utilizables.
 
-## Qué existe hoy
+Fuentes:
+- https://datos.madrid.es/dataset/201747-0-bibliobuses-bibliotecas (CC BY 4.0; direcciones ya incluidas en clientes.json).
+- https://www.comunidad.madrid/centros/alcala-henares
+- https://www.comunidad.madrid/centros/alcobendas
+- https://www.comunidad.madrid/centros/getafe
 
-La app ya detecta revisiones hasta una fecha, evita duplicarlas, mantiene la bolsa y agrupa con fecha inicial, capacidad y disponibilidad. Para preparar un borrador manual se puede elegir el domingo objetivo en «Vencimientos hasta» y el lunes objetivo al agrupar. Hay que revisar el resultado: el agrupador actual considera toda la bolsa y puede crear jornadas más allá de esa semana.
-
-Para cumplir exactamente el flujo semanal faltan la configuración de X por empresa, el filtro de vencimientos de la semana, el límite de fecha final del agrupador, los borradores semanales y la ejecución periódica. Este documento es el diseño pendiente; no hay una automatización semanal activa.
+## Directorio
+Búsqueda sin distinguir tildes; filtros combinables por localidad, mes de próxima revisión, estado de visita y cliente activo/archivado. Orden por nombre, próxima revisión o localidad. Páginas de 10, 25 o 50 clientes; anterior, siguiente y salto de página. Cambiar filtros reinicia la página y conserva la selección al editar. La paginación es de presentación sobre el conjunto cargado por /state, no paginación SQL; para volúmenes de producción mayores queda pendiente trasladar filtros y paginación al servidor.

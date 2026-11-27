@@ -10,3 +10,6 @@ CREATE TABLE IF NOT EXISTS webhook_receipts (id text PRIMARY KEY, received_at ti
 CREATE INDEX IF NOT EXISTS visits_company_status ON visits(company_id,status);
 CREATE INDEX IF NOT EXISTS outbox_pending ON outbox(state,available_at);
 CREATE UNIQUE INDEX IF NOT EXISTS plans_technician_day ON plans(company_id,technician_id,day);
+
+CREATE TABLE IF NOT EXISTS weekly_settings (company_id text PRIMARY KEY REFERENCES companies(id), config jsonb NOT NULL, updated_by text NOT NULL, updated_at timestamptz NOT NULL DEFAULT now());
+CREATE TABLE IF NOT EXISTS weekly_runs (id text PRIMARY KEY, company_id text NOT NULL REFERENCES companies(id), week_start date NOT NULL, week_end date NOT NULL, status text NOT NULL DEFAULT 'draft' CHECK(status IN ('draft','approved')), revision integer NOT NULL DEFAULT 1 CHECK(revision>0), payload jsonb NOT NULL, config jsonb NOT NULL, created_by text NOT NULL, updated_at timestamptz NOT NULL DEFAULT now(), last_auto_week date, approved_at timestamptz, approved_by text, UNIQUE(company_id,week_start), CHECK(week_end=week_start+6), CHECK(extract(isodow FROM week_start)=1));

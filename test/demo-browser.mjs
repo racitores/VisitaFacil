@@ -24,11 +24,20 @@ const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (e) => errors.push(e.message));
 try {
+  await page.clock.setFixedTime(new Date("2026-11-27T10:00:00Z"));
   await page.goto("http://localhost:31929/?demo=1");
   await page.getByText("DEMO · Datos ficticios", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Clientes", exact: true }).click();
   await page.locator("#client-cards .card").first().waitFor();
-  assert.equal(await page.locator("#client-cards .card").count(), 89);
+  assert.equal(await page.locator("#client-cards .card").count(), 25);
+  await page.locator("[data-directory-action=next]").click();
+  await page.getByText("360 de 360 clientes · página 2 de 15",{exact:true}).waitFor();
+  await page.locator("[data-directory-filter=month]").fill("2027-01");
+  await page.locator("[data-directory-filter=month]").dispatchEvent("change");
+  await page.getByText("120 de 360 clientes · página 1 de 5",{exact:true}).waitFor();
+  await page.locator("[data-directory-filter=locality]").selectOption("Madrid");
+  await page.getByText("72 de 360 clientes · página 1 de 3",{exact:true}).waitFor();
+  await page.locator("[data-directory-action=clear]").click();
   await page.locator("[data-action=edit-client]").first().click();
   await page.locator("#editor [name=equipo]").fill("Solo en mi navegador");
   await page.locator("#editor button[type=submit]").click();
@@ -54,7 +63,7 @@ try {
   await page
     .getByText("Cliente no puede el día propuesto", { exact: true })
     .waitFor();
-  await page.locator("[data-action=suggest]").first().click();
+  await page.locator(".card").filter({hasText:"Cliente no puede el día propuesto"}).locator("[data-action=suggest]").click();
   await page.locator("#editor").waitFor({ state: "visible" });
   await page.locator("#editor button[type=submit]").click();
   await page.locator("#editor").waitFor({ state: "hidden" });
@@ -83,15 +92,32 @@ try {
       .evaluate((el) => el.scrollWidth > window.innerWidth + 1),
     false,
   );
+  await page.getByRole("button",{name:"Semanal",exact:true}).click();
+  await page.locator("[data-action=weekly-settings]").click();
+  await page.locator("#editor [name=weeksAhead]").fill("2");
+  await page.locator("#editor [name=capacity]").fill("2");
+  await page.locator("#editor [name=origin]").fill("40.4,-3.7");
+  await page.locator("#editor [name=destination]").fill("40.4,-3.7");
+  await page.locator("#editor [name=weeklyTechnicians]").selectOption(["demo-technician","demo-tech-norte","demo-tech-sur"]);
+  assert(await page.locator("#editor [name=enabled]").isDisabled());
+  await page.locator("#editor button[type=submit]").click();
+  await page.locator("#editor").waitFor({state:"hidden"});
+  await page.locator("[data-action=weekly-generate]").click();
+  await page.locator(".weekly-run").first().waitFor();
+  await page.locator("[data-action=weekly-approve]").first().click();
+  await page.locator("#editor button[type=submit]").click();
+  await page.locator("#editor").waitFor({state:"hidden"});
+  await page.getByText("Aprobado",{exact:true}).waitFor();
+  await page.getByRole("button",{name:"Agenda",exact:true}).click();
   await page
     .getByRole("button", { name: "Restablecer demo", exact: true })
     .click();
   await page.locator("#editor button[type=submit]").click();
   await page.locator("#editor").waitFor({ state: "hidden" });
-  assert.equal(await page.locator("[data-action=route]").count(), 0);
+  assert((await page.locator("[data-action=route]").count()) > 0);
   assert.equal(apiCalls, 0);
   console.log(
-    "PASS demo móvil sin backend: 89 clientes, persistencia, agrupación, bolsa, sugerencia e intervención; cero peticiones a /api.",
+    "PASS demo móvil sin backend: 360 clientes con páginas, persistencia, agrupación, bolsa, sugerencia e intervención; cero peticiones a /api.",
   );
 } finally {
   await browser.close();

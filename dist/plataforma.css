@@ -207,3 +207,9 @@ dialog::backdrop {
   border-radius: 0.5rem;
   text-decoration: none;
 }
+
+.site-nav > a {display:inline-block;padding:.65rem 1rem;background:#184b33;color:white;border-radius:.5rem;text-decoration:none;font-weight:600;}
+#directory-controls {margin-bottom:1rem;}
+#directory-pages {margin:1.5rem 0;}
+.grid-form > *, .card {min-width:0;}
+.weekly-run li {overflow-wrap:anywhere;}
